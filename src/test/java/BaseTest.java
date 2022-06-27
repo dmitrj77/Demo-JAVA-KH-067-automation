@@ -11,7 +11,6 @@ public class BaseTest {
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
-        WebDriverManager.safaridriver().setup();
     }
 
     @BeforeMethod
