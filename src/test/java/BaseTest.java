@@ -16,7 +16,7 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    void setup1() {
+    public void setup1() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
@@ -24,7 +24,7 @@ public class BaseTest {
     }
 
     @AfterMethod
-    void teardown() {
+    public void teardown() {
         driver.quit();
     }
 
