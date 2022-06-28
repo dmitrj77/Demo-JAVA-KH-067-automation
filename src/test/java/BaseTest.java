@@ -16,10 +16,11 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    void setupTest() {
+    void setup1() {
         driver = new ChromeDriver();
-        driver.get("http://www.foxtrot.com.ua");
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().window().maximize();
+        driver.get("http://www.foxtrot.com.ua");
     }
 
     @AfterMethod
