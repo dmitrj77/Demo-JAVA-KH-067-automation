@@ -11,12 +11,12 @@ public class BaseTest {
     WebDriver driver;
 
     @BeforeSuite
-    public void setup() {
+    public void webDriverManagerSetup() {
         WebDriverManager.chromedriver().setup();
     }
 
     @BeforeMethod
-    public void webDriverManagerSetup() {
+    public void driverSetup() {
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
@@ -25,7 +25,6 @@ public class BaseTest {
 
     @AfterMethod
     public void teardown() {
-
         driver.quit();
     }
 
