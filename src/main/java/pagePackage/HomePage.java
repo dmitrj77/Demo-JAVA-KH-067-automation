@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class HomePage extends BasePage {
 
     private By searchInput =  By.cssSelector(".header-search__field");
-    private By searchButton = new By.ByCssSelector(".header-search__button");
+    private By searchButton = new By.ByCssSelector(".header-search__button.evinent-search-button");
     private By dataLangXpath = new By.ByXPath("//a[@data-lang]");
     private By searchActiveClassCss= new By.ByCssSelector(".active");
 

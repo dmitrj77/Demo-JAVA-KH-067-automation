@@ -3,16 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.example</groupId>
     <artifactId>Demo-JAVA-KH-067-automation</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <selenium.version>4.2.1</selenium.version>
         <testng.version>7.3.0</testng.version>
+        <allure-testng.version>2.18.1</allure-testng.version>
+        <aspectj.version>1.8.10</aspectj.version>
+        <maven.surefire.plugin.version>2.20</maven.surefire.plugin.version>
         <webdrivermanager>5.2.1</webdrivermanager>
     </properties>
     <dependencies>
@@ -27,10 +28,38 @@
             <version>${testng.version}</version>
         </dependency>
         <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <build>
+       <plugins>
+           <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.plugin.version}</version>
+               <configuration>
+                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/
+                        ${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
+                   <suiteXmlFiles>
+                        <suiteXmlFile>src/test/resources/testngTask5.xml</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+               <dependencies>
+                   <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 </project>

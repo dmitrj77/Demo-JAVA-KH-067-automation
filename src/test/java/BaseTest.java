@@ -33,7 +33,7 @@ public class BaseTest {
     public Object[][] createData() {
         return new Object[][]{
                 {"Конденціонери", 0},
-                {"Праски", 3},
+
         };
     }
 
