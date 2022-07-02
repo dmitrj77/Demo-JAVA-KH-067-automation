@@ -24,7 +24,6 @@ public class ProductPage extends BasePage {
 
     public CartPage buy() {
         driver.findElement(buyButton).click();
-        //driver.findElement(title);
         return new CartPage(driver);
     }
 

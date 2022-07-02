@@ -1,3 +1,4 @@
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
@@ -6,7 +7,7 @@ import pages.ProductPage;
 import pages.SearchResultsPage;
 
 
-public class AddProductToCart extends BaseTest {
+public class CartTest extends BaseTest {
 
     @Test(groups = {"non-register", "positive"})
     public void addOneProductToCart() {
@@ -14,13 +15,15 @@ public class AddProductToCart extends BaseTest {
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         ProductPage productPage = new ProductPage(driver);
         CartPage cartPage = new CartPage(driver);
+        Actions actions=new Actions(driver);
 
-        String search="Конденціонери";
-        int index=0;
+        String searchCategory = "КОНДИЦІОНЕР";
+        int indexRangeOfProduct = 0;
+        String param="РУС";
 
-        homePage.setUkr();
-        homePage.search(search);
-        searchResultsPage.clickProductByIndex(index);
+        homePage.setLanguage(param);
+        homePage.search(searchCategory);
+        searchResultsPage.clickProductByIndex(indexRangeOfProduct);
         String expectedText = productPage.getTitle();
         productPage.buy();
         String actualText = cartPage.getTitleElement();
