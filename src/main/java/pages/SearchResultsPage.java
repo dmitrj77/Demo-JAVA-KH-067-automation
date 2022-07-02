@@ -11,12 +11,11 @@ import java.util.List;
 
 public class SearchResultsPage extends BasePage {
     private By results = new By.ByXPath("//div[@class='listing__body-wrap image-switch']//div[@class='card__body']/a");
-    private By title = new By.ByCssSelector(".search-page__box-title");
+    private By titleProductNotFound = new By.ByCssSelector(".search-page__box-title");
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
 
     public SearchResultsPage(WebDriver driver) {
-
         super(driver);
     }
 
@@ -28,7 +27,7 @@ public class SearchResultsPage extends BasePage {
     }
 
     public String getTitleNotFound() {
-        WebElement getTitle = driver.findElement(title);
+        WebElement getTitle = driver.findElement(titleProductNotFound);
         return getTitle.getText();
     }
 

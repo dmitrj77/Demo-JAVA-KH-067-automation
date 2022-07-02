@@ -10,7 +10,6 @@ public class ProductPage extends BasePage {
     private By price = new By.ByCssSelector(".product-box__main_price-wrapper");
 
     public ProductPage(WebDriver driver) {
-
         super(driver);
     }
 
