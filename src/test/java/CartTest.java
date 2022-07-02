@@ -10,7 +10,7 @@ import pages.SearchResultsPage;
 public class CartTest extends BaseTest {
 
     @Test(groups = {"non-register", "positive"})
-    public void addOneProductToCart() {
+    public void addOneProductToCartTest() {
         HomePage homePage = new HomePage(driver);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         ProductPage productPage = new ProductPage(driver);
@@ -18,12 +18,10 @@ public class CartTest extends BaseTest {
         Actions actions = new Actions(driver);
 
         String searchCategory = "Кондиціонер";
-        int indexRangeOfProduct = 0;
-        String param = "РУС";
+        int testProductIndex = 0;
 
-        homePage.setLanguage(param);
         homePage.search(searchCategory);
-        searchResultsPage.clickProductByIndex(indexRangeOfProduct);
+        searchResultsPage.clickProductByIndex(testProductIndex);
         String expectedText = productPage.getTitle();
         productPage.buy();
         String actualText = cartPage.getTitleElement();
