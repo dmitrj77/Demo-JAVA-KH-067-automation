@@ -9,7 +9,7 @@ public class HomePage extends BasePage {
 
     private By searchInput = By.cssSelector(".header-search__field");
     private By dataLang = new By.ByXPath("//a[@data-lang]");
-    private By searchActiveClass = new By.ByCssSelector(".active");
+    private By searchActiveClass = new By.ByXPath("//ul[@class='header__sub-lang']//li/a[@class='active']");
 
 
     public HomePage(WebDriver driver) {

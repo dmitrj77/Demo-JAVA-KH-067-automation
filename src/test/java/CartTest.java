@@ -15,11 +15,11 @@ public class CartTest extends BaseTest {
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         ProductPage productPage = new ProductPage(driver);
         CartPage cartPage = new CartPage(driver);
-        Actions actions=new Actions(driver);
+        Actions actions = new Actions(driver);
 
-        String searchCategory = "КОНДИЦІОНЕР";
+        String searchCategory = "Кондиціонер";
         int indexRangeOfProduct = 0;
-        String param="РУС";
+        String param = "РУС";
 
         homePage.setLanguage(param);
         homePage.search(searchCategory);
