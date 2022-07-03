@@ -3,9 +3,12 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.devtools.v85.domsnapshot.model.ArrayOfStrings;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.lang.model.element.Element;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CartPage extends BasePage {
@@ -17,10 +20,14 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
-    public List<WebElement> getTitleElements() {
+    public List<String> getTitleElements() {
+        List<String> stringElement = new ArrayList<>();
         List<WebElement> elements = wait.until(ExpectedConditions
                 .visibilityOfAllElementsLocatedBy(titleOfProduct));
-        return elements;
+        for (WebElement element : elements) {
+            stringElement.add(element.getText());
+        }
+        return stringElement;
     }
 
 }
