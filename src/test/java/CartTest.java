@@ -24,7 +24,7 @@ public class CartTest extends BaseTest {
         searchResultsPage.clickProductByIndex(testProductIndex);
         String expectedText = productPage.getTitle();
         productPage.buy();
-        String actualText = cartPage.getTitleElement();
+        String actualText = cartPage.getTitleElements().get(0).getText();
 
         Assert.assertEquals(actualText, expectedText);
     }

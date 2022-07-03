@@ -3,13 +3,14 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProductPage extends BasePage {
     private By title = new By.ById("product-page-title");
     private By buyButton = new By.ByCssSelector(".product-box__main-buy__button");
     private By price = new By.ByCssSelector(".product-box__main_price-wrapper");
 
-    public ProductPage(WebDriver driver) {
+    public ProductPage(WebDriver driver){
         super(driver);
     }
 

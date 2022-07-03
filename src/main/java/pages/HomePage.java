@@ -5,11 +5,12 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class HomePage extends BasePage {
 
     private By searchInput = By.cssSelector(".header-search__field");
-    private By dataLang = new By.ByXPath("//a[@data-lang]");
-    private By searchActiveClass = new By.ByXPath("//ul[@class='header__sub-lang']//li/a[@class='active']");
+    private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
 
 
     public HomePage(WebDriver driver) {
@@ -25,11 +26,10 @@ public class HomePage extends BasePage {
     }
 
     public HomePage setLanguage(String language) {
-        WebElement dataLang = driver.findElement(this.dataLang);
-        WebElement searchActiveClass = driver.findElement(this.searchActiveClass);
-        if (searchActiveClass.getText().equals(language)) {
-            dataLang.click();
-        }
+        List<WebElement> elementList = driver.findElements(languageChoice);
+        if (elementList.get(0).getText().equals(language)) {
+            elementList.get(0).click();
+        } else elementList.get(1).click();
         return new HomePage(driver);
     }
 
