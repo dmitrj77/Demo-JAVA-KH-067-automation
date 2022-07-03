@@ -24,10 +24,10 @@ public class HomePage extends BasePage {
         return new SearchResultsPage(driver);
     }
 
-    public HomePage setLanguage(String param) {
+    public HomePage setLanguage(String language) {
         WebElement dataLang = driver.findElement(this.dataLang);
         WebElement searchActiveClass = driver.findElement(this.searchActiveClass);
-        if (searchActiveClass.getText().equals(param)) {
+        if (searchActiveClass.getText().equals(language)) {
             dataLang.click();
         }
         return new HomePage(driver);
