@@ -4,11 +4,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
 
 import java.time.Duration;
 
 public class BaseTest {
-   protected WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeSuite
     public void webDriverManagerSetup() {
@@ -26,6 +27,14 @@ public class BaseTest {
     @AfterMethod
     public void teardown() {
         driver.quit();
+    }
+
+    @DataProvider(name = "setLanguage")
+    public Object[][] createData() {
+        return new Object[][]{
+                {"УКР", "Я шукаю ..."},
+                {"РУС", "Я ищу ..."},
+        };
     }
 
 }
