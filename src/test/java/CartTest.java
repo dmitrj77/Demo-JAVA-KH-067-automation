@@ -7,6 +7,9 @@ import pages.HomePage;
 import pages.ProductPage;
 import pages.SearchResultsPage;
 
+import static pages.HomePage.elementOfCategory;
+import static pages.HomePage.nestedElementOfCategory;
+
 
 public class CartTest extends BaseTest {
 
@@ -35,12 +38,10 @@ public class CartTest extends BaseTest {
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         ProductPage productPage = new ProductPage(driver);
 
-        By computerCategory = By.xpath("//main[@role = 'main']//li[@data-category='32021']");
-        By apple = By.xpath("//main[@role = 'main']//a[contains(@href,'noutbuki_apple.html')]");
         int testProductIndex = 0;
 
         homePage.catalogButtonClick();
-        homePage.moveToElementInElement(computerCategory, apple);
+        homePage.moveToElementInElement(elementOfCategory, nestedElementOfCategory);
         searchResultsPage.clickProductByIndex(testProductIndex);
         productPage.featureButtonClick();
         Assert.assertNotNull(productPage.getFeatureText());

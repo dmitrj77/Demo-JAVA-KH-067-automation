@@ -13,6 +13,8 @@ public class HomePage extends BasePage {
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
     private By catalogButton = By.xpath("//nav[@class='header__categories-catalog js-open-catalog-mb']");
+    public static By elementOfCategory = By.xpath("//main[@role = 'main']//li[@data-category='32021']");
+    public static By nestedElementOfCategory = By.xpath("//main[@role = 'main']//a[contains(@href,'noutbuki_apple.html')]");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -37,7 +39,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage catalogButtonClick() {
-        driver.findElement(searchInput).click();
+        driver.findElement(catalogButton).click();
         return new HomePage(driver);
     }
 
