@@ -32,7 +32,7 @@ public class CartTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
 
         homePage.setLanguage(language);
-        String attributePlaceHolder = homePage.getAttributePlaceHolder();
+        String attributePlaceHolder = homePage.getSearchPlaceHolder();
         Assert.assertTrue(attributePlaceHolder.equals(value));
     }
 

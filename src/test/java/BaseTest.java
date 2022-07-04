@@ -29,8 +29,8 @@ public class BaseTest {
         driver.quit();
     }
 
-    @DataProvider(name = "setLanguage")
-    public Object[][] createData() {
+    @DataProvider(name = "siteLanguages")
+    public Object[][] getLanguages() {
         return new Object[][]{
                 {"УКР", "Я шукаю ..."},
                 {"РУС", "Я ищу ..."},
