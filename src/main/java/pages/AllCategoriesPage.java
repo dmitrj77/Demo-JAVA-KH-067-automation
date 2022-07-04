@@ -5,13 +5,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class AllCategoriesPage extends BasePage {
-    private By pageTitle= new By.ByCssSelector(".page__title");
+    private By pageTitle = new By.ByCssSelector(".page__title");
+
     public AllCategoriesPage(WebDriver driver) {
         super(driver);
     }
-    public String getTitleAllCategoryPage(){
-        WebElement searchPageTitle=driver.findElement(pageTitle);
-        return   searchPageTitle.getText();
+
+    public String getTitleAllCategoryPage() {
+        WebElement searchPageTitle = driver.findElement(pageTitle);
+        return searchPageTitle.getText();
     }
 
 }
