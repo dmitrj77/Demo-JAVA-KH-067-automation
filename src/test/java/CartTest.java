@@ -9,13 +9,12 @@ import pages.SearchResultsPage;
 
 public class CartTest extends BaseTest {
 
-    @Test(groups = {"non-register", "positive"})
+    @Test(groups = {"positive"})
     public void addOneProductToCartTest() {
         HomePage homePage = new HomePage(driver);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         ProductPage productPage = new ProductPage(driver);
         CartPage cartPage = new CartPage(driver);
-        Actions actions = new Actions(driver);
 
         String searchCategory = "Кондиціонер";
         int testProductIndex = 0;
@@ -24,7 +23,7 @@ public class CartTest extends BaseTest {
         searchResultsPage.clickProductByIndex(testProductIndex);
         String expectedText = productPage.getTitle();
         productPage.buy();
-        String actualText=cartPage.getTitleElements().get(0);
+        String actualText=cartPage.getTitles().get(0);
 
         Assert.assertEquals(actualText, expectedText);
     }

@@ -29,7 +29,7 @@ public class HomePage extends BasePage {
         List<WebElement> elementList = driver.findElements(languageChoice);
         if (elementList.get(0).getText().equals(language)) {
             elementList.get(0).click();
-        } else if(elementList.get(1).getText().equals(language)){
+        } else if (elementList.get(1).getText().equals(language)) {
             elementList.get(1).click();
         }
         return new HomePage(driver);

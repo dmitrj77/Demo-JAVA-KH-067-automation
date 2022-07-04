@@ -4,9 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 
 public class SearchResultsPage extends BasePage {
@@ -18,8 +16,8 @@ public class SearchResultsPage extends BasePage {
     }
 
     public ProductPage clickProductByIndex(int index) {
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(results, 0));
         List<WebElement> resultsWebElements = driver.findElements(results);
-        wait.until(ExpectedConditions.elementToBeClickable(results));
         resultsWebElements.get(index).click();
         return new ProductPage(driver);
     }
