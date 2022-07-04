@@ -1,3 +1,4 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -28,4 +29,20 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(actualText, expectedText);
     }
 
+    @Test(groups = {"positive"})
+    public void checkFeatureButton() {
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+        ProductPage productPage = new ProductPage(driver);
+
+        By computerCategory = By.xpath("//main[@role = 'main']//li[@data-category='32021']");
+        By apple = By.xpath("//main[@role = 'main']//a[contains(@href,'noutbuki_apple.html')]");
+        int testProductIndex = 0;
+
+        homePage.catalogButtonClick();
+        homePage.moveToElementInElement(computerCategory, apple);
+        searchResultsPage.clickProductByIndex(testProductIndex);
+        productPage.featureButtonClick();
+        Assert.assertNotNull(productPage.getFeatureText());
+    }
 }

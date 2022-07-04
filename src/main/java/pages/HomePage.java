@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ public class HomePage extends BasePage {
 
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
-
+    private By catalogButton = By.xpath("//nav[@class='header__categories-catalog js-open-catalog-mb']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -35,4 +36,16 @@ public class HomePage extends BasePage {
         return new HomePage(driver);
     }
 
+    public HomePage catalogButtonClick() {
+        driver.findElement(searchInput).click();
+        return new HomePage(driver);
+    }
+
+    public SearchResultsPage moveToElementInElement(By first, By second) {
+        Actions actionProvider = new Actions(driver);
+        WebElement element = driver.findElement(first);
+        WebElement iphone = driver.findElement(second);
+        actionProvider.moveToElement(element).moveToElement(iphone).click().build().perform();
+        return new SearchResultsPage(driver);
+    }
 }
