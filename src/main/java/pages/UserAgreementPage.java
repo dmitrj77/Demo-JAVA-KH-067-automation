@@ -7,5 +7,9 @@ public class UserAgreementPage extends BasePage {
         super(driver);
     }
 
+    public String getUrl() {
+        String currentUrl = driver.getCurrentUrl();
+        return currentUrl;
+    }
 }
 

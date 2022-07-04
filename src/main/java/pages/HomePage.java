@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class HomePage extends BasePage {
 
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
+    private By SiteTermsOfUse = By.xpath("//a[contains(@href,'1401')]");
 
 
     public HomePage(WebDriver driver) {
@@ -33,6 +35,12 @@ public class HomePage extends BasePage {
             elementList.get(1).click();
         }
         return new HomePage(driver);
+    }
+
+    public UserAgreementPage siteTermsOfUseClick() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(SiteTermsOfUse));
+        driver.findElement(SiteTermsOfUse).click();
+        return new UserAgreementPage(driver);
     }
 
 }
