@@ -12,7 +12,7 @@ public class HomePage extends BasePage {
 
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
-    private By SiteTermsOfUse = By.xpath("//a[contains(@href,'1401')]");
+    private By siteTermsOfUse = By.xpath("//a[contains(@href,'1401')]");
 
 
     public HomePage(WebDriver driver) {
@@ -37,9 +37,9 @@ public class HomePage extends BasePage {
         return new HomePage(driver);
     }
 
-    public UserAgreementPage siteTermsOfUseClick() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(SiteTermsOfUse));
-        driver.findElement(SiteTermsOfUse).click();
+    public UserAgreementPage clickTermsOfUse() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(siteTermsOfUse));
+        driver.findElement(siteTermsOfUse).click();
         return new UserAgreementPage(driver);
     }
 

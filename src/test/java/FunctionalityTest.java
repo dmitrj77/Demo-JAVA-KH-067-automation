@@ -11,7 +11,7 @@ public class FunctionalityTest extends BaseTest{
 
         String expectedUrl = "https://www.foxtrot.com.ua/uk/article/1401";
 
-        homePage.siteTermsOfUseClick();
+        homePage.clickTermsOfUse();
         Assert.assertEquals(userAgreementPage.getUrl(), expectedUrl);
     }
 }
