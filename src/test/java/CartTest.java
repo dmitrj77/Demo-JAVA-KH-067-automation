@@ -1,7 +1,10 @@
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.*;
+import pages.CartPage;
+import pages.HomePage;
+import pages.ProductPage;
+import pages.SearchResultsPage;
 
 
 public class CartTest extends BaseTest {
@@ -23,6 +26,15 @@ public class CartTest extends BaseTest {
         String actualText = cartPage.getTitles().get(0);
 
         Assert.assertEquals(actualText, expectedText);
+    }
+
+    @Test(dataProvider = "setLanguage", groups = {"positive"})
+    public void changeLanguageOnSite(String language, String expectedSearchPlaceholder) {
+        HomePage homePage = new HomePage(driver);
+
+        homePage.setLanguage(language);
+        String actualSearchPlaceholder = homePage.getSearchPlaceHolder();
+        Assert.assertEquals(actualSearchPlaceholder, expectedSearchPlaceholder);
     }
 
     @Test(groups = {"positive"})
