@@ -43,6 +43,7 @@ public class CartTest extends BaseTest {
         homePage.clickSubCategory(LAPTOPS, LAPTOPS_APPLE);
         searchResultsPage.clickProductByIndex(testProductIndex);
         productPage.clickFeatureButton();
+
         Assert.assertNotNull(productPage.getFeatureText());
     }
 

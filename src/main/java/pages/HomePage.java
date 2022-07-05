@@ -5,7 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import utils.UtilsForLocators;
+import utils.LocatorsUtils;
 
 import java.util.List;
 
@@ -47,9 +47,9 @@ public class HomePage extends BasePage {
     }
 
     public SearchResultsPage clickSubCategory(String category, String subcategory) {
-        driver.findElement(UtilsForLocators.getLinkLocator(category)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(UtilsForLocators.getLinkLocator(subcategory)));
-        driver.findElement(UtilsForLocators.getLinkLocator(subcategory)).click();
+        driver.findElement(LocatorsUtils.getLinkLocator(category)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(LocatorsUtils.getLinkLocator(subcategory)));
+        driver.findElement(LocatorsUtils.getLinkLocator(subcategory)).click();
         return new SearchResultsPage(driver);
     }
 
