@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartPage extends BasePage {
-    private By titleOfProduct = new By.ByCssSelector(".header-tooltip__cards-item__title ");
+    private By titlesOfProduct = new By.ByCssSelector(".header-tooltip__cards-item__title ");
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -18,7 +18,7 @@ public class CartPage extends BasePage {
     public List<String> getTitles() {
         List<String> titles = new ArrayList<>();
         List<WebElement> titleElements = wait.until(ExpectedConditions
-                .visibilityOfAllElementsLocatedBy(titleOfProduct));
+                .visibilityOfAllElementsLocatedBy(titlesOfProduct));
         for (WebElement element : titleElements) {
             titles.add(element.getText());
         }
