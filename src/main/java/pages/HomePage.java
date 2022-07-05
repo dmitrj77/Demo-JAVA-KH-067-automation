@@ -12,8 +12,8 @@ public class HomePage extends BasePage {
 
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
-    private By compareIcon=new By.ByCssSelector(".icon-compare-2-filled");
-    private By productCatalog=new By.ByXPath("//a[@class='jslink button']");
+    private By compareIcon = new By.ByCssSelector(".icon-compare-2-filled");
+    private By productCatalog = new By.ByXPath("//a[@class='jslink button']");
     private By favoriteIcon = new By.ByCssSelector(".header-favorite__icon.header-favorite__icon_hover.icon-heart-filled");
 
     private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
@@ -40,22 +40,14 @@ public class HomePage extends BasePage {
         }
         return new HomePage(driver);
     }
-    public AllCategoriesPage compareAllCategory(){
-        WebElement searchCompareIcon=driver.findElement(compareIcon);
+
+    public AllCategoriesPage compareAllCategory() {
+        WebElement searchCompareIcon = driver.findElement(compareIcon);
         searchCompareIcon.click();
-        WebElement searchToCatalogButton=driver.findElement(productCatalog);
+        WebElement searchToCatalogButton = driver.findElement(productCatalog);
         searchToCatalogButton.click();
         return new AllCategoriesPage(driver);
     }
-    public AllCategoriesPage favoriteAllCategory(){
-        WebElement searchCompareIcon=driver.findElement(favoriteIcon);
-        searchCompareIcon.click();
-        WebElement searchToCatalogButton=driver.findElement(productCatalog);
-        searchToCatalogButton.click();
-        return new AllCategoriesPage(driver);
-    }
-
-
 
     public String getSearchPlaceHolder() {
         WebElement searchTitlePlaceHolder = driver.findElement(searchInput);
