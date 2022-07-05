@@ -44,7 +44,7 @@ public class HomePage extends BasePage {
         return new HomePage(driver);
     }
 
-    public HomePage catalogButtonClick() {
+    public HomePage clickCatalogButton() {
         driver.findElement(catalogButton).click();
         return new HomePage(driver);
     }
