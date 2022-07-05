@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.UtilsForLocators;
 
 import java.util.List;
 
@@ -44,15 +45,10 @@ public class HomePage extends BasePage {
         return new HomePage(driver);
     }
 
-    public By getLinkLocator(String sublink) {
-        By xPath = By.xpath("//main[@role = 'main']//a[contains(@href,'" + sublink + "')]");
-        return xPath;
-    }
-
     public SearchResultsPage clickSubCategory(String category, String subcategory) {
-        driver.findElement(getLinkLocator(category)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(getLinkLocator(subcategory)));
-        driver.findElement(getLinkLocator(subcategory)).click();
+        driver.findElement(UtilsForLocators.getLinkLocator(category)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(UtilsForLocators.getLinkLocator(subcategory)));
+        driver.findElement(UtilsForLocators.getLinkLocator(subcategory)).click();
         return new SearchResultsPage(driver);
     }
     public String getSearchPlaceHolder() {

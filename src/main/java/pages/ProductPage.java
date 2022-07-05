@@ -36,7 +36,7 @@ public class ProductPage extends BasePage {
         return driver.findElement(price).getText();
     }
 
-    public ProductPage featureButtonClick() {
+    public ProductPage clickFeatureButton() {
         driver.findElement(featureButton).click();
         return new ProductPage(driver);
     }
