@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -15,6 +17,7 @@ public class HomePage extends BasePage {
     private By cashbackIcon = new By.ByXPath("//i[contains(@class, 'icon-cashback-circle')]");
     private By detailsButton = new By.ByXPath("//div[@class='header-tooltip__nodata']//a[@data-url='L3VrL2FjY291bnQvZm94ZmFu']");
 
+    private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
 
 
     public HomePage(WebDriver driver) {
@@ -50,5 +53,11 @@ public class HomePage extends BasePage {
         return searchTitlePlaceHolder.getAttribute("placeholder");
     }
 
+    public UserAgreementPage clickTermsOfUse() {
+        Actions actionProvider = new Actions(driver);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(siteTermsOfUse));
+        actionProvider.moveToElement(driver.findElement(siteTermsOfUse)).click().build().perform();
+        return new UserAgreementPage(driver);
+    }
 
 }
