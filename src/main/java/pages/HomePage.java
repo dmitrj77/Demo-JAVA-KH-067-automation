@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -15,8 +17,8 @@ public class HomePage extends BasePage {
     private By compareIcon = new By.ByCssSelector(".icon-compare-2-filled");
     private By productCatalog = new By.ByXPath("//a[@class='jslink button']");
     private By favoriteIcon = new By.ByCssSelector(".header-favorite__icon.header-favorite__icon_hover.icon-heart-filled");
-
     private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
+
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -54,5 +56,11 @@ public class HomePage extends BasePage {
         return searchTitlePlaceHolder.getAttribute("placeholder");
     }
 
+    public UserAgreementPage clickTermsOfUse() {
+        Actions actionProvider = new Actions(driver);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(siteTermsOfUse));
+        actionProvider.moveToElement(driver.findElement(siteTermsOfUse)).click().build().perform();
+        return new UserAgreementPage(driver);
+    }
 
 }
