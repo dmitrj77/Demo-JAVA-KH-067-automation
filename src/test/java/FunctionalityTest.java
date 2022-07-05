@@ -47,4 +47,16 @@ public class FunctionalityTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
+    @Test(groups = {"functionality", "positive"})
+    public void checkFavoriteIcon() {
+        HomePage homePage = new HomePage(driver);
+        AllCategoriesPage allCategoriesPage = new AllCategoriesPage(driver);
+        String language = "УКР";
+        homePage.setLanguage(language);
+        homePage.clickFavoriteIcon();
+        String expectedTitle = "Всі категорії";
+        String actualTitle = allCategoriesPage.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
 }

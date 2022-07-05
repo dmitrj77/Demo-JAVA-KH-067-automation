@@ -22,6 +22,8 @@ public class HomePage extends BasePage {
     private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
 
 
+
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -69,6 +71,13 @@ public class HomePage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(siteTermsOfUse));
         actionProvider.moveToElement(driver.findElement(siteTermsOfUse)).click().build().perform();
         return new UserAgreementPage(driver);
+    }
+    public AllCategoriesPage clickFavoriteIcon() {
+        WebElement searchCompareIcon = driver.findElement(favoriteIcon);
+        searchCompareIcon.click();
+        WebElement searchToCatalogButton = driver.findElement(productCatalog);
+        searchToCatalogButton.click();
+        return new AllCategoriesPage(driver);
     }
 
 }
