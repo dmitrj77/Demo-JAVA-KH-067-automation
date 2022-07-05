@@ -6,8 +6,8 @@ import pages.HomePage;
 import pages.ProductPage;
 import pages.SearchResultsPage;
 
-import static utils.CategoryList.LAPTOPS;
-import static utils.SubcategoriesList.LAPTOPS_APPLE;
+import static utils.Category.LAPTOPS;
+import static utils.SubCategories.LAPTOPS_APPLE;
 
 
 public class CartTest extends BaseTest {
@@ -42,9 +42,10 @@ public class CartTest extends BaseTest {
         homePage.catalogButtonClick();
         homePage.clickSubCategory(LAPTOPS, LAPTOPS_APPLE);
         searchResultsPage.clickProductByIndex(testProductIndex);
-        productPage.featureButtonClick();
+        productPage.clickFeatureButton();
         Assert.assertNotNull(productPage.getFeatureText());
     }
+
     @Test(dataProvider = "setLanguage", groups = {"positive"})
     public void changeLanguageOnSite(String language, String expectedSearchPlaceholder) {
         HomePage homePage = new HomePage(driver);

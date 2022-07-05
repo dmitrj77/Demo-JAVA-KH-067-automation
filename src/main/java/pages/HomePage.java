@@ -14,6 +14,7 @@ public class HomePage extends BasePage {
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
     private By catalogButton = By.xpath("//nav[@class='header__categories-catalog js-open-catalog-mb']");
+    private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
     private By catalog = By.xpath("//ul[@class='catalog__category smooth-scroll']");
 
 
@@ -51,6 +52,7 @@ public class HomePage extends BasePage {
         driver.findElement(UtilsForLocators.getLinkLocator(subcategory)).click();
         return new SearchResultsPage(driver);
     }
+
     public String getSearchPlaceHolder() {
         WebElement searchTitlePlaceHolder = driver.findElement(searchInput);
         return searchTitlePlaceHolder.getAttribute("placeholder");
