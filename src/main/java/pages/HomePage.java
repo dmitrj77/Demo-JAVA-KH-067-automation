@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -38,8 +39,10 @@ public class HomePage extends BasePage {
     }
 
     public UserAgreementPage clickTermsOfUse() {
+        Actions actionProvider = new Actions(driver);
+        WebElement element = driver.findElement(siteTermsOfUse);
         wait.until(ExpectedConditions.visibilityOfElementLocated(siteTermsOfUse));
-        driver.findElement(siteTermsOfUse).click();
+        actionProvider.moveToElement(element).click().build().perform();
         return new UserAgreementPage(driver);
     }
 
