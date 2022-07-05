@@ -33,7 +33,7 @@ public class CartTest extends BaseTest {
 
         homePage.setLanguage(language);
         String actualSearchPlaceholder = homePage.getSearchPlaceHolder();
-        Assert.assertTrue(actualSearchPlaceholder.equals(expectedSearchPlaceholder));
+        Assert.assertEquals(actualSearchPlaceholder, expectedSearchPlaceholder);
     }
 
 }
