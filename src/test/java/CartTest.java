@@ -28,12 +28,12 @@ public class CartTest extends BaseTest {
     }
 
     @Test(dataProvider = "setLanguage", groups = {"positive"})
-    public void changeLanguageOnSite(String language, String value) {
+    public void changeLanguageOnSite(String language, String expectedSearchPlaceholder) {
         HomePage homePage = new HomePage(driver);
 
         homePage.setLanguage(language);
-        String attributePlaceHolder = homePage.getSearchPlaceHolder();
-        Assert.assertTrue(attributePlaceHolder.equals(value));
+        String actualSearchPlaceholder = homePage.getSearchPlaceHolder();
+        Assert.assertTrue(actualSearchPlaceholder.equals(expectedSearchPlaceholder));
     }
 
 }
