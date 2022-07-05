@@ -16,6 +16,9 @@ public class HomePage extends BasePage {
     private By cashbackIcon = new By.ByXPath("//i[contains(@class, 'icon-cashback-circle')]");
     private By detailsButton = new By.ByXPath("//div[@class='header-tooltip__nodata']//a[@data-url='L3VrL2FjY291bnQvZm94ZmFu']");
 
+    private By compareIcon = new By.ByCssSelector(".icon-compare-2-filled");
+    private By productCatalog = new By.ByXPath("//a[@class='jslink button']");
+    private By favoriteIcon = new By.ByCssSelector(".header-favorite__icon.header-favorite__icon_hover.icon-heart-filled");
     private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
 
 
@@ -46,6 +49,14 @@ public class HomePage extends BasePage {
         driver.findElement(cashbackIcon).click();
         driver.findElement(detailsButton).click();
         return new CashBackFoxFanPage(driver);
+    }
+
+    public AllCategoriesPage compareAllCategory() {
+        WebElement searchCompareIcon = driver.findElement(compareIcon);
+        searchCompareIcon.click();
+        WebElement searchToCatalogButton = driver.findElement(productCatalog);
+        searchToCatalogButton.click();
+        return new AllCategoriesPage(driver);
     }
 
     public String getSearchPlaceHolder() {
