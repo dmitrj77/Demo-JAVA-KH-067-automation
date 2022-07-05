@@ -1,9 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CartPage;
-import pages.HomePage;
-import pages.ProductPage;
-import pages.SearchResultsPage;
+import pages.*;
 
 
 public class CartTest extends BaseTest {
