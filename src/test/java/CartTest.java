@@ -1,3 +1,4 @@
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
@@ -44,4 +45,13 @@ public class CartTest extends BaseTest {
         productPage.featureButtonClick();
         Assert.assertNotNull(productPage.getFeatureText());
     }
+    @Test(dataProvider = "setLanguage", groups = {"positive"})
+    public void changeLanguageOnSite(String language, String expectedSearchPlaceholder) {
+        HomePage homePage = new HomePage(driver);
+
+        homePage.setLanguage(language);
+        String actualSearchPlaceholder = homePage.getSearchPlaceHolder();
+        Assert.assertEquals(actualSearchPlaceholder, expectedSearchPlaceholder);
+    }
+
 }
