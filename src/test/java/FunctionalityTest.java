@@ -2,6 +2,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AllCategoriesPage;
 import pages.HomePage;
+import pages.UserAgreementPage;
 
 public class FunctionalityTest extends BaseTest {
     @Test(groups = {"functionality", "positive"})
@@ -11,16 +12,12 @@ public class FunctionalityTest extends BaseTest {
         String language = "УКР";
         homePage.setLanguage(language);
         homePage.favoriteAllCategory();
-        String expectedTitleOfPage="Всі категорії";
+        String expectedTitleOfPage = "Всі категорії";
         String actualTitleOfPage = allCategoriesPage.getTitle();
         Assert.assertEquals(actualTitleOfPage, expectedTitleOfPage);
     }
 
-import pages.*;
-
-public class FunctionalityTest extends BaseTest{
-
-    @Test(groups = {"functionality","positive"})
+    @Test(groups = {"functionality", "positive"})
     public void checkSiteTermsOfUse() {
         HomePage homePage = new HomePage(driver);
         UserAgreementPage userAgreementPage = new UserAgreementPage(driver);
