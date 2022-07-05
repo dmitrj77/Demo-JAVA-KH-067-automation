@@ -2,6 +2,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AllCategoriesPage;
 import pages.HomePage;
+import pages.UserAgreementPage;
 
 public class FunctionalityTest extends BaseTest {
 
