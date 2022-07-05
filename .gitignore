@@ -30,6 +30,8 @@ hs_err_pid*
 #idea
 .idea
 *.iml
+allure-results
+
 
 #MacFiles
 .DS_Store

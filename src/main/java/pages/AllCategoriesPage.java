@@ -11,7 +11,7 @@ public class AllCategoriesPage extends BasePage {
         super(driver);
     }
 
-    public String getTitleAllCategoryPage() {
+    public String getTitle() {
         WebElement searchPageTitle = driver.findElement(pageTitle);
         return searchPageTitle.getText();
     }
