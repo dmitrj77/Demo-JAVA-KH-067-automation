@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -13,6 +14,9 @@ public class HomePage extends BasePage {
 
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
+    private By cashbackIcon = new By.ByXPath("//i[contains(@class, 'icon-cashback-circle')]");
+    private By detailsButton = new By.ByXPath("//div[@class='header-tooltip__nodata']//a[@data-url='L3VrL2FjY291bnQvZm94ZmFu']");
+
     private By productCatalog = new By.ByXPath("//div[@class='tooltip slot tooltip_active']/div[@class='header-tooltip__nodata']/a");
     private By favoriteIcon = new By.ByCssSelector(".header-favorite__icon.header-favorite__icon_hover.icon-heart-filled");
     private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
@@ -41,12 +45,10 @@ public class HomePage extends BasePage {
         return new HomePage(driver);
     }
 
-    public AllCategoriesPage clickFavoriteIcon() {
-        WebElement searchCompareIcon = driver.findElement(favoriteIcon);
-        searchCompareIcon.click();
-        WebElement searchToCatalogButton = driver.findElement(productCatalog);
-        searchToCatalogButton.click();
-        return new AllCategoriesPage(driver);
+    public CashBackFoxFanPage goToCashBackPage() {
+        driver.findElement(cashbackIcon).click();
+        driver.findElement(detailsButton).click();
+        return new CashBackFoxFanPage(driver);
     }
 
     public String getSearchPlaceHolder() {
@@ -59,6 +61,13 @@ public class HomePage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(siteTermsOfUse));
         actionProvider.moveToElement(driver.findElement(siteTermsOfUse)).click().build().perform();
         return new UserAgreementPage(driver);
+    }
+    public AllCategoriesPage clickFavoriteIcon() {
+        WebElement searchCompareIcon = driver.findElement(favoriteIcon);
+        searchCompareIcon.click();
+        WebElement searchToCatalogButton = driver.findElement(productCatalog);
+        searchToCatalogButton.click();
+        return new AllCategoriesPage(driver);
     }
 
 }
