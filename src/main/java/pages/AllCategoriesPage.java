@@ -10,7 +10,7 @@ public class AllCategoriesPage extends BasePage {
     public AllCategoriesPage(WebDriver driver) {
         super(driver);
     }
-    public String getTitleAllCategoryPage(){
+    public String getTitle(){
         WebElement searchPageTitle=driver.findElement(pageTitle);
       return   searchPageTitle.getText();
     }

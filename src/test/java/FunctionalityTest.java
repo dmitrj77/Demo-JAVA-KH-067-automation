@@ -12,7 +12,7 @@ public class FunctionalityTest extends BaseTest {
         String language = "УКР";
         homePage.setLanguage(language);
         homePage.compareAllCategory();
-        Assert.assertEquals(allCategoriesPage.getTitleAllCategoryPage(), "Всі категорії");
+        Assert.assertEquals(allCategoriesPage.getTitle(), "Всі категорії");
     }
 
 }
