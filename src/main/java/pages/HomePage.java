@@ -13,6 +13,7 @@ public class HomePage extends BasePage {
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
     private By buyersButton = By.xpath("//div[@class='header__sub-buyers unselectable']");
+    private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
 
     public HomePage(WebDriver driver) {
         super(driver);
