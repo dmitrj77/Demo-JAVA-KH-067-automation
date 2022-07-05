@@ -10,7 +10,7 @@ public class BuyersPage extends BasePage {
         super(driver);
     }
 
-    public GiftCardPage giftCardButtonClick() {
+    public GiftCardPage clickGiftCardButton() {
         driver.findElement(giftCardButton).click();
         return new GiftCardPage(driver);
     }

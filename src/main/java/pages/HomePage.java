@@ -60,7 +60,7 @@ public class HomePage extends BasePage {
         return new UserAgreementPage(driver);
     }
 
-    public BuyersPage buyersButtonClick() {
+    public BuyersPage clickBuyersButton() {
         driver.findElement(buyersButton).click();
         return new BuyersPage(driver);
     }

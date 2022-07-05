@@ -41,9 +41,9 @@ public class CartTest extends BaseTest {
 
         String expectedResult = "500 ₴";
 
-        homePage.buyersButtonClick();
-        buyersPage.giftCardButtonClick();
-        giftCardPage.buyButtonClick();
+        homePage.clickBuyersButton();
+        buyersPage.clickGiftCardButton();
+        giftCardPage.clickBuyButton();
         String actualResult = giftCardPage.getSumOfGiftCard();
         Assert.assertEquals(actualResult, expectedResult);
     }

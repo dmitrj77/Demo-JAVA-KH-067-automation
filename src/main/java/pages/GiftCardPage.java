@@ -11,7 +11,7 @@ public class GiftCardPage extends BasePage {
         super(driver);
     }
 
-    public CartPage buyButtonClick() {
+    public CartPage clickBuyButton() {
         driver.findElement(buyButton).click();
         return new CartPage(driver);
     }
