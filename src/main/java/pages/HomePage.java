@@ -16,10 +16,10 @@ public class HomePage extends BasePage {
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
     private By cashbackIcon = new By.ByXPath("//i[contains(@class, 'icon-cashback-circle')]");
     private By detailsButton = new By.ByXPath("//div[@class='header-tooltip__nodata']//a[@data-url='L3VrL2FjY291bnQvZm94ZmFu']");
-
+    private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
     private By productCatalog = new By.ByXPath("//div[@class='tooltip slot tooltip_active']/div[@class='header-tooltip__nodata']/a");
     private By favoriteIcon = new By.ByCssSelector(".header-favorite__icon.header-favorite__icon_hover.icon-heart-filled");
-    private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
+
 
 
     public HomePage(WebDriver driver) {
