@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.AllCategoriesPage;
 import pages.CashBackFoxFanPage;
 import pages.HomePage;
 import pages.UserAgreementPage;
