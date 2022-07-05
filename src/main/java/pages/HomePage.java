@@ -41,7 +41,7 @@ public class HomePage extends BasePage {
         return new HomePage(driver);
     }
 
-    public AllCategoriesPage favoriteAllCategory() {
+    public AllCategoriesPage clickFavoriteIcon() {
         WebElement searchCompareIcon = driver.findElement(favoriteIcon);
         searchCompareIcon.click();
         WebElement searchToCatalogButton = driver.findElement(productCatalog);

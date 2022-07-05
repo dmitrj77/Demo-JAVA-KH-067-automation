@@ -11,10 +11,10 @@ public class FunctionalityTest extends BaseTest {
         AllCategoriesPage allCategoriesPage = new AllCategoriesPage(driver);
         String language = "УКР";
         homePage.setLanguage(language);
-        homePage.favoriteAllCategory();
-        String expectedTitleOfPage = "Всі категорії";
-        String actualTitleOfPage = allCategoriesPage.getTitle();
-        Assert.assertEquals(actualTitleOfPage, expectedTitleOfPage);
+        homePage.clickFavoriteIcon();
+        String expectedTitle = "Всі категорії";
+        String actualTitle = allCategoriesPage.getTitle();
+        Assert.assertEquals(actualTitle, expectedTitle);
     }
 
     @Test(groups = {"functionality", "positive"})
