@@ -29,12 +29,12 @@ public class HomePage extends BasePage {
     }
 
     public HomePage setLanguage(String language) {
-        List<WebElement> elementList = driver.findElements(languageChoice);
-        wait.until(ExpectedConditions.visibilityOfAllElements(elementList));
-        if (elementList.get(0).getText().equals(language)) {
-            elementList.get(0).click();
-        } else if (elementList.get(1).getText().equals(language)) {
-            elementList.get(1).click();
+        List<WebElement> languages = driver.findElements(languageChoice);
+        wait.until(ExpectedConditions.visibilityOfAllElements(languages));
+        if (languages.get(0).getText().equals(language)) {
+            languages.get(0).click();
+        } else if (languages.get(1).getText().equals(language)) {
+            languages.get(1).click();
         }
         return new HomePage(driver);
     }
@@ -46,5 +46,11 @@ public class HomePage extends BasePage {
         searchToCatalogButton.click();
         return new AllCategoriesPage(driver);
     }
+
+    public String getSearchPlaceHolder() {
+        WebElement searchTitlePlaceHolder = driver.findElement(searchInput);
+        return searchTitlePlaceHolder.getAttribute("placeholder");
+    }
+
 
 }
