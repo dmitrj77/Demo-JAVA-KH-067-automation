@@ -1,3 +1,4 @@
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
@@ -33,4 +34,18 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(actualSearchPlaceholder, expectedSearchPlaceholder);
     }
 
+    @Test(groups = {"positive"})
+    public void addGiftCardToCartTest() {
+        HomePage homePage = new HomePage(driver);
+        BuyersPage buyersPage = new BuyersPage(driver);
+        GiftCardPage giftCardPage = new GiftCardPage(driver);
+
+        String expectedResult = "500 ₴";
+
+        homePage.buyersButtonClick();
+        buyersPage.giftCardButtonClick();
+        giftCardPage.buyButtonClick();
+        String actualResult = giftCardPage.getSumOfGiftCard();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
