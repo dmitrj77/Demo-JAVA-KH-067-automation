@@ -13,7 +13,7 @@ public class HomePage extends BasePage {
 
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
-    private By siteTermsOfUse = By.xpath("//a[contains(@href,'1401')]");
+    private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
 
 
     public HomePage(WebDriver driver) {
@@ -40,9 +40,8 @@ public class HomePage extends BasePage {
 
     public UserAgreementPage clickTermsOfUse() {
         Actions actionProvider = new Actions(driver);
-        WebElement element = driver.findElement(siteTermsOfUse);
         wait.until(ExpectedConditions.visibilityOfElementLocated(siteTermsOfUse));
-        actionProvider.moveToElement(element).click().build().perform();
+        actionProvider.moveToElement(driver.findElement(siteTermsOfUse)).click().build().perform();
         return new UserAgreementPage(driver);
     }
 
