@@ -16,7 +16,7 @@ public class HomePage extends BasePage {
     private By productCatalog=new By.ByXPath("//a[@class='jslink button']");
     private By favoriteIcon = new By.ByCssSelector(".header-favorite__icon.header-favorite__icon_hover.icon-heart-filled");
 
-
+    private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
 
     public HomePage(WebDriver driver) {
         super(driver);
