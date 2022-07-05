@@ -1,8 +1,7 @@
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
-
-import static pages.GiftCardPage.addedGiftCard;
 
 
 public class CartTest extends BaseTest {
@@ -32,10 +31,12 @@ public class CartTest extends BaseTest {
         BuyersPage buyersPage = new BuyersPage(driver);
         GiftCardPage giftCardPage = new GiftCardPage(driver);
 
+        String expectedResult = "500 ₴";
+
         homePage.buyersButtonClick();
         buyersPage.giftCardButtonClick();
         giftCardPage.buyButtonClick();
-
-        Assert.assertNotNull(addedGiftCard);
+        String actualResult = giftCardPage.getSumOfGiftCard();
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }
