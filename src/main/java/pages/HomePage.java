@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -14,6 +13,9 @@ public class HomePage extends BasePage {
 
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
+    private By cashbackIcon = new By.ByXPath("//i[contains(@class, 'icon-cashback-circle')]");
+    private By detailsButton = new By.ByXPath("//div[@class='header-tooltip__nodata']//a[@data-url='L3VrL2FjY291bnQvZm94ZmFu']");
+
     private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
 
 
@@ -38,6 +40,12 @@ public class HomePage extends BasePage {
             languages.get(1).click();
         }
         return new HomePage(driver);
+    }
+
+    public CashBackFoxFanPage goToCashBackPage() {
+        driver.findElement(cashbackIcon).click();
+        driver.findElement(detailsButton).click();
+        return new CashBackFoxFanPage(driver);
     }
 
     public String getSearchPlaceHolder() {
