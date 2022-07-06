@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.LocatorsUtils;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class HomePage extends BasePage {
 
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
+    private By catalogButton = By.xpath("//nav[@class='header__categories-catalog js-open-catalog-mb']");
     private By cashbackIcon = new By.ByXPath("//i[contains(@class, 'icon-cashback-circle')]");
     private By detailsButton = new By.ByXPath("//div[@class='header-tooltip__nodata']//a[@data-url='L3VrL2FjY291bnQvZm94ZmFu']");
 
@@ -45,6 +47,18 @@ public class HomePage extends BasePage {
             languages.get(1).click();
         }
         return new HomePage(driver);
+    }
+
+    public HomePage clickCatalogButton() {
+        driver.findElement(catalogButton).click();
+        return new HomePage(driver);
+    }
+
+    public SearchResultsPage clickSubCategory(String category, String subcategory) {
+        driver.findElement(LocatorsUtils.getLinkLocator(category)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(LocatorsUtils.getLinkLocator(subcategory)));
+        driver.findElement(LocatorsUtils.getLinkLocator(subcategory)).click();
+        return new SearchResultsPage(driver);
     }
 
     public CashBackFoxFanPage goToCashBackPage() {

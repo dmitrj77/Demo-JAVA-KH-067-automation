@@ -1,9 +1,13 @@
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.HomePage;
 import pages.ProductPage;
 import pages.SearchResultsPage;
+
+import static utils.Category.LAPTOPS;
+import static utils.SubCategories.LAPTOPS_APPLE;
 
 
 public class CartTest extends BaseTest {
@@ -25,6 +29,22 @@ public class CartTest extends BaseTest {
         String actualText = cartPage.getTitles().get(0);
 
         Assert.assertEquals(actualText, expectedText);
+    }
+
+    @Test(groups = {"positive"})
+    public void checkFeatureButton() {
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+        ProductPage productPage = new ProductPage(driver);
+
+        int testProductIndex = 0;
+
+        homePage.clickCatalogButton();
+        homePage.clickSubCategory(LAPTOPS, LAPTOPS_APPLE);
+        searchResultsPage.clickProductByIndex(testProductIndex);
+        productPage.clickFeatureButton();
+
+        Assert.assertNotNull(productPage.getFeatureText());
     }
 
     @Test(dataProvider = "setLanguage", groups = {"positive"})
