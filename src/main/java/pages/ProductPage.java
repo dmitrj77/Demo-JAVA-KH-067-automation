@@ -47,17 +47,5 @@ public class ProductPage extends BasePage {
         return features;
     }
 
-    @Description("Get int from string")
-    public int getIntFromString(String price) {
-        String[] splitedString = price.split(" ");
-        StringBuilder stringBuilder = new StringBuilder();
-        int k = splitedString.length - 1;
-        for (int i = 0; i < k; i++) {
-            stringBuilder.append(splitedString[i]);
-        }
-        String joinedString = stringBuilder.toString();
-        int intPrice = Integer.parseInt(joinedString);
-        return intPrice;
-    }
-
 }
+
