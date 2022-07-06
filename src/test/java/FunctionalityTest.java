@@ -1,9 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.AllCategoriesPage;
-import pages.CashBackFoxFanPage;
-import pages.HomePage;
-import pages.UserAgreementPage;
+import pages.*;
 
 public class FunctionalityTest extends BaseTest {
 
@@ -59,4 +56,14 @@ public class FunctionalityTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
+    @Test(groups = {"functionality", "positive"})
+    public void checkSearchField() {
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+
+        String query = "Macbook";
+
+        homePage.search(query);
+        Assert.assertNotNull(searchResultsPage.getListOfProducts().size());
+    }
 }

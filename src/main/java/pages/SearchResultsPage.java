@@ -27,4 +27,9 @@ public class SearchResultsPage extends BasePage {
         return getTitle.getText();
     }
 
+    public List<WebElement> getListOfProducts() {
+        wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(results, 0));
+        List<WebElement> resultsWebElements = driver.findElements(results);
+        return resultsWebElements;
+    }
 }
