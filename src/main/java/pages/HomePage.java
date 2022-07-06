@@ -19,15 +19,10 @@ public class HomePage extends BasePage {
     private By catalogButton = By.xpath("//nav[@class='header__categories-catalog js-open-catalog-mb']");
     private By cashbackIcon = new By.ByXPath("//i[contains(@class, 'icon-cashback-circle')]");
     private By detailsButton = new By.ByXPath("//div[@class='header-tooltip__nodata']//a[@data-url='L3VrL2FjY291bnQvZm94ZmFu']");
-
     private By compareIcon = new By.ByCssSelector(".icon-compare-2-filled");
     private By productCatalog = new By.ByXPath("//a[@class='jslink button']");
     private By favoriteIcon = new By.ByCssSelector(".header-favorite__icon.header-favorite__icon_hover.icon-heart-filled");
     private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
-
-
-    private By catalogButton = By.xpath("//nav[@class='header__categories-catalog js-open-catalog-mb']");
-    private By catalog = By.xpath("//ul[@class='catalog__category smooth-scroll']");
     private By priceInputFieldTo = new By.ByXPath("//input[@id='range-field-to']");
     private By sidebarSubmitButton = new By.ByXPath("//input[@type='submit']");
     private By priceDescLink = new By.ByXPath("//ul[@class='listing__body-sort']//li[@data-sort-order='PriceDesc']");
@@ -100,13 +95,6 @@ public class HomePage extends BasePage {
         WebElement searchToCatalogButton = driver.findElement(productCatalog);
         searchToCatalogButton.click();
         return new AllCategoriesPage(driver);
-    }
-
-    public SearchResultsPage clickSubCategory(String category, String subcategory) {
-        driver.findElement(getLinkLocator(category)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(getLinkLocator(subcategory)));
-        driver.findElement(getLinkLocator(subcategory)).click();
-        return new SearchResultsPage(driver);
     }
 
     public SearchResultsPage inputMaxPriceToSideBar(String maxPrice) {

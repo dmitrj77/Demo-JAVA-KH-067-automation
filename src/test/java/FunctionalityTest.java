@@ -1,9 +1,8 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.AllCategoriesPage;
-import pages.CashBackFoxFanPage;
-import pages.HomePage;
-import pages.UserAgreementPage;
+import pages.*;
+import static utils.Category.SMARTPHONES;
+import static utils.SubCategories.SMARTPHONES_APPLE;
 
 public class FunctionalityTest extends BaseTest {
 
@@ -57,15 +56,8 @@ public class FunctionalityTest extends BaseTest {
         String expectedTitle = "Всі категорії";
         String actualTitle = allCategoriesPage.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
-import org.testng.annotations.Test;
-import pages.HomePage;
-import pages.ProductPage;
-import pages.SearchResultsPage;
+    }
 
-import static utils.Category.SMARTPHONES;
-import static utils.Subcategories.SMARTPHONES_APPLE;
-
-public class FunctionalityTest extends BaseTest {
     @Test(groups = {"functionality", "positive"})
     public void sidebarPriceSorting() {
         HomePage homePage = new HomePage(driver);
@@ -73,12 +65,11 @@ public class FunctionalityTest extends BaseTest {
         ProductPage productPage = new ProductPage(driver);
 
 
-        homePage.catalogButtonClick();
+        homePage.clickCatalogButton();
         homePage.clickSubCategory(SMARTPHONES, SMARTPHONES_APPLE);
         homePage.inputMaxPriceToSideBar("25000");
         homePage.sortProductsDesc();
         searchResultsPage.clickProductByIndex(0);
         String actualRes = productPage.getPriseOfProduct();
     }
-
 }
