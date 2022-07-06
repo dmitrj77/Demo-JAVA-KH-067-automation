@@ -1,3 +1,4 @@
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
@@ -25,7 +26,7 @@ public class CartTest extends BaseTest {
         searchResultsPage.clickProductByIndex(testProductIndex);
         String expectedText = productPage.getTitle();
         productPage.buy();
-        String actualText=cartPage.getTitles().get(0);
+        String actualText = cartPage.getTitles().get(0);
 
         Assert.assertEquals(actualText, expectedText);
     }

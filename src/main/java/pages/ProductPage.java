@@ -45,4 +45,5 @@ public class ProductPage extends BasePage {
         List<WebElement> features = driver.findElements(featureText);
         return features;
     }
+
 }
