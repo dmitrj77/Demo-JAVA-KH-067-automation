@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -31,6 +32,7 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
+    @Step("Search product: {searchQuery}")
     public SearchResultsPage search(String searchQuery) {
         WebElement searchInputElement = driver.findElement(searchInput);
         searchInputElement.clear();
@@ -39,6 +41,7 @@ public class HomePage extends BasePage {
         return new SearchResultsPage(driver);
     }
 
+    @Step("Change language: {language}")
     public HomePage setLanguage(String language) {
         List<WebElement> languages = driver.findElements(languageChoice);
         wait.until(ExpectedConditions.visibilityOfAllElements(languages));
@@ -50,11 +53,13 @@ public class HomePage extends BasePage {
         return new HomePage(driver);
     }
 
+    @Step("Click catalog button")
     public HomePage clickCatalogButton() {
         driver.findElement(catalogButton).click();
         return new HomePage(driver);
     }
 
+    @Step("Click category then subcategory: {category},{subcategory}")
     public SearchResultsPage clickSubCategory(String category, String subcategory) {
         driver.findElement(LocatorsUtils.getLinkLocator(category)).click();
         wait.until(ExpectedConditions.elementToBeClickable(LocatorsUtils.getLinkLocator(subcategory)));
@@ -62,12 +67,14 @@ public class HomePage extends BasePage {
         return new SearchResultsPage(driver);
     }
 
+    @Step("Go to Cashback page")
     public CashBackFoxFanPage goToCashBackPage() {
         driver.findElement(cashbackIcon).click();
         driver.findElement(detailsButton).click();
         return new CashBackFoxFanPage(driver);
     }
 
+    @Step("Go to All category page via compare icon")
     public AllCategoriesPage compareAllCategory() {
         WebElement searchCompareIcon = driver.findElement(compareIcon);
         searchCompareIcon.click();
@@ -76,18 +83,22 @@ public class HomePage extends BasePage {
         return new AllCategoriesPage(driver);
     }
 
+    @Step("Search placeholder")
     public String getSearchPlaceHolder() {
         WebElement searchTitlePlaceHolder = driver.findElement(searchInput);
         return searchTitlePlaceHolder.getAttribute("placeholder");
     }
 
+    @Step("Go to Agreement page ")
     public UserAgreementPage clickTermsOfUse() {
         Actions actionProvider = new Actions(driver);
         wait.until(ExpectedConditions.visibilityOfElementLocated(siteTermsOfUse));
         actionProvider.moveToElement(driver.findElement(siteTermsOfUse)).click().build().perform();
         return new UserAgreementPage(driver);
     }
-    public AllCategoriesPage clickFavoriteIcon() {
+
+    @Step("Go to All category page via Favorite icon")
+        public AllCategoriesPage clickFavoriteIcon() {
         WebElement searchCompareIcon = driver.findElement(favoriteIcon);
         searchCompareIcon.click();
         WebElement searchToCatalogButton = driver.findElement(productCatalog);
@@ -95,6 +106,7 @@ public class HomePage extends BasePage {
         return new AllCategoriesPage(driver);
     }
 
+    @Step("Go to Buyers page")
     public BuyersPage clickBuyersButton() {
         driver.findElement(buyersButton).click();
         return new BuyersPage(driver);
