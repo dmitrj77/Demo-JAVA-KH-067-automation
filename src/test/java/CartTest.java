@@ -1,11 +1,9 @@
-import listener.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CartPage;
 import pages.HomePage;
 import pages.ProductPage;
 import pages.SearchResultsPage;
-
 
 public class CartTest extends BaseTest {
 
@@ -35,11 +33,6 @@ public class CartTest extends BaseTest {
         homePage.setLanguage(language);
         String actualSearchPlaceholder = homePage.getSearchPlaceHolder();
         Assert.assertEquals(actualSearchPlaceholder, expectedSearchPlaceholder);
-    }
-    @Test(groups = {"positive"})
-    public void addProductToFavorite() {
-        HomePage homePage = new HomePage(driver);
-        SearchResultsPage searchResultsPage=new SearchResultsPage(driver);
     }
 
 }
