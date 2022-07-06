@@ -43,7 +43,7 @@ public class CartTest extends BaseTest {
         Assert.assertNotNull(productPage.getFeatureText());
     }
 
-    @Test(dataProvider = "setLanguage", groups = {"positive"})
+    @Test(dataProvider = "siteLanguages", groups = {"positive"})
     public void changeLanguageOnSite(String language, String expectedSearchPlaceholder) {
         HomePage homePage = new HomePage(driver);
 
