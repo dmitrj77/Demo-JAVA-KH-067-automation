@@ -10,7 +10,7 @@ import static utils.SubCategories.LAPTOPS_APPLE;
 public class CartTest extends BaseTest {
 
     @Description("Add one product to cart")
-    @Test(groups = {"positive"})
+    @Test
     public void addOneProductToCartTest() {
         HomePage homePage = new HomePage(driver);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
@@ -30,7 +30,7 @@ public class CartTest extends BaseTest {
     }
 
     @Description("Check Feature Button")
-    @Test(groups = {"positive"})
+    @Test
     public void checkFeatureButton() {
         HomePage homePage = new HomePage(driver);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
@@ -48,8 +48,9 @@ public class CartTest extends BaseTest {
 
 
     @Description("Change language on site")
-    @Test(dataProvider = "setLanguage", groups = {"positive"})
-    public void changeLanguageOnSiteTest(String language, String expectedSearchPlaceholder) {
+    @Test
+    public void changeLanguageOnSite(String language, String expectedSearchPlaceholder) {
+
         HomePage homePage = new HomePage(driver);
 
         homePage.setLanguage(language);
@@ -59,7 +60,7 @@ public class CartTest extends BaseTest {
 
 
     @Description("Add Gift card to cart")
-    @Test(groups = {"positive"})
+    @Test
     public void addGiftCardToCartTest() {
         HomePage homePage = new HomePage(driver);
         BuyersPage buyersPage = new BuyersPage(driver);
