@@ -1,6 +1,8 @@
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
+
 import static utils.Category.SMARTPHONES;
 import static utils.SubCategories.SMARTPHONES_APPLE;
 
@@ -58,18 +60,27 @@ public class FunctionalityTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
-    @Test(groups = {"functionality", "positive"})
+    @Description("Sort product by Max price")
+    @Test
     public void sidebarPriceSorting() {
         HomePage homePage = new HomePage(driver);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         ProductPage productPage = new ProductPage(driver);
 
+        String maxPrice = "25000";
+        int expectedPrice = 25000;
+        int indexOfProduct = 0;
+
 
         homePage.clickCatalogButton();
         homePage.clickSubCategory(SMARTPHONES, SMARTPHONES_APPLE);
-        homePage.inputMaxPriceToSideBar("25000");
+        homePage.inputMaxPriceToSideBar(maxPrice);
         homePage.sortProductsDesc();
-        searchResultsPage.clickProductByIndex(0);
-        String actualRes = productPage.getPriseOfProduct();
+        searchResultsPage.clickProductByIndex(indexOfProduct);
+        String actualResString = productPage.getPriseOfProduct();
+        int actualPrice = productPage.getIntFromString(actualResString);
+
+        Assert.assertTrue(expectedPrice >= actualPrice);
     }
+
 }
