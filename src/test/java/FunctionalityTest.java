@@ -1,3 +1,4 @@
+import com.sun.org.glassfish.gmbal.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.AllCategoriesPage;
@@ -34,6 +35,7 @@ public class FunctionalityTest extends BaseTest {
         Assert.assertEquals(actualTitleOfPage, expectedTitleOfPage);
     }
 
+    @Description("Check site terms of use")
     @Test(groups = {"functionality", "positive"})
     public void checkSiteTermsOfUse() {
         HomePage homePage = new HomePage(driver);
@@ -47,6 +49,7 @@ public class FunctionalityTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
+    @Description("Check favorite icon")
     @Test(groups = {"functionality", "positive"})
     public void checkFavoriteIcon() {
         HomePage homePage = new HomePage(driver);
