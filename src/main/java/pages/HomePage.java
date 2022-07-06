@@ -99,5 +99,20 @@ public class HomePage extends BasePage {
         driver.findElement(buyersButton).click();
         return new BuyersPage(driver);
     }
+	
+	public SearchResultsPage clickElement(By selector) {
+        driver.findElement(selector).click();
+        return new SearchResultsPage(driver);
+    }
+	
+	public BasePage clickElementByText(String searchString) {
+        driver.findElement(searchString).click();
+        return new BasePage(driver);
+    }
+	
+	public WebElement getElement(String searchString) {
+        driver.findElement(searchString).click();
+        return new BasePage(driver);
+    }
 
 }
