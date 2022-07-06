@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.LocatorsUtils;
 
 import java.util.List;
 
@@ -13,8 +14,10 @@ public class HomePage extends BasePage {
 
     private By searchInput = By.cssSelector(".header-search__field");
     private By languageChoice = By.xpath("//ul[@class='header__sub-lang']//li/a");
+    private By catalogButton = By.xpath("//nav[@class='header__categories-catalog js-open-catalog-mb']");
     private By cashbackIcon = new By.ByXPath("//i[contains(@class, 'icon-cashback-circle')]");
     private By detailsButton = new By.ByXPath("//div[@class='header-tooltip__nodata']//a[@data-url='L3VrL2FjY291bnQvZm94ZmFu']");
+    private By buyersButton = By.xpath("//div[@class='header__sub-buyers unselectable']");
 
     private By compareIcon = new By.ByCssSelector(".icon-compare-2-filled");
     private By productCatalog = new By.ByXPath("//a[@class='jslink button']");
@@ -45,6 +48,18 @@ public class HomePage extends BasePage {
         return new HomePage(driver);
     }
 
+    public HomePage clickCatalogButton() {
+        driver.findElement(catalogButton).click();
+        return new HomePage(driver);
+    }
+
+    public SearchResultsPage clickSubCategory(String category, String subcategory) {
+        driver.findElement(LocatorsUtils.getLinkLocator(category)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(LocatorsUtils.getLinkLocator(subcategory)));
+        driver.findElement(LocatorsUtils.getLinkLocator(subcategory)).click();
+        return new SearchResultsPage(driver);
+    }
+
     public CashBackFoxFanPage goToCashBackPage() {
         driver.findElement(cashbackIcon).click();
         driver.findElement(detailsButton).click();
@@ -69,6 +84,18 @@ public class HomePage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(siteTermsOfUse));
         actionProvider.moveToElement(driver.findElement(siteTermsOfUse)).click().build().perform();
         return new UserAgreementPage(driver);
+    }
+    public AllCategoriesPage clickFavoriteIcon() {
+        WebElement searchCompareIcon = driver.findElement(favoriteIcon);
+        searchCompareIcon.click();
+        WebElement searchToCatalogButton = driver.findElement(productCatalog);
+        searchToCatalogButton.click();
+        return new AllCategoriesPage(driver);
+    }
+
+    public BuyersPage clickBuyersButton() {
+        driver.findElement(buyersButton).click();
+        return new BuyersPage(driver);
     }
 
 }
