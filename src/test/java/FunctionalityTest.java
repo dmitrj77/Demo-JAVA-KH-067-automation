@@ -8,7 +8,7 @@ import static utils.SubCategories.SMARTPHONES_APPLE;
 
 public class FunctionalityTest extends BaseTest {
 
-    @Test(groups = {"functionality"})
+    @Test
     public void checkCashbackIcon() {
         HomePage homePage = new HomePage(driver);
         CashBackFoxFanPage cashBackFoxFanPage = new CashBackFoxFanPage(driver);
@@ -23,7 +23,7 @@ public class FunctionalityTest extends BaseTest {
         Assert.assertEquals(actualLogoText, expectedLogoText);
     }
 
-    @Test(groups = {"functionality", "positive"})
+    @Test
     public void checkCompareIcon() {
         HomePage homePage = new HomePage(driver);
         AllCategoriesPage allCategoriesPage = new AllCategoriesPage(driver);
@@ -35,7 +35,7 @@ public class FunctionalityTest extends BaseTest {
         Assert.assertEquals(actualTitleOfPage, expectedTitleOfPage);
     }
 
-    @Test(groups = {"functionality", "positive"})
+    @Test
     public void checkSiteTermsOfUse() {
         HomePage homePage = new HomePage(driver);
         UserAgreementPage userAgreementPage = new UserAgreementPage(driver);
@@ -48,7 +48,7 @@ public class FunctionalityTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
-    @Test(groups = {"functionality", "positive"})
+    @Test
     public void checkFavoriteIcon() {
         HomePage homePage = new HomePage(driver);
         AllCategoriesPage allCategoriesPage = new AllCategoriesPage(driver);

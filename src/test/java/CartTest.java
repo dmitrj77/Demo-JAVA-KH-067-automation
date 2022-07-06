@@ -1,4 +1,3 @@
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
@@ -9,7 +8,7 @@ import static utils.SubCategories.LAPTOPS_APPLE;
 
 public class CartTest extends BaseTest {
 
-    @Test(groups = {"positive"})
+    @Test
     public void addOneProductToCartTest() {
         HomePage homePage = new HomePage(driver);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
@@ -28,7 +27,7 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(actualText, expectedText);
     }
 
-    @Test(groups = {"positive"})
+    @Test
     public void checkFeatureButton() {
         HomePage homePage = new HomePage(driver);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
@@ -43,7 +42,7 @@ public class CartTest extends BaseTest {
         Assert.assertNotNull(productPage.getFeatureText());
     }
 
-    @Test(dataProvider = "setLanguage", groups = {"positive"})
+    @Test
     public void changeLanguageOnSite(String language, String expectedSearchPlaceholder) {
         HomePage homePage = new HomePage(driver);
         homePage.setLanguage(language);
@@ -51,7 +50,7 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(actualSearchPlaceholder, expectedSearchPlaceholder);
     }
 
-    @Test(groups = {"positive"})
+    @Test
     public void addGiftCardToCartTest() {
         HomePage homePage = new HomePage(driver);
         BuyersPage buyersPage = new BuyersPage(driver);
