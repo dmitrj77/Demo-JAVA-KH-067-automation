@@ -24,7 +24,7 @@ public class SearchResultsPage extends BasePage {
         return new ProductPage(driver);
     }
 
-    @Step("Search title ")
+    @Step("Get title of product that not exists")
     public String getTitleNotFound() {
         WebElement getTitle = driver.findElement(productNotFoundTitle);
         return getTitle.getText();
