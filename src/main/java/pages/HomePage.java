@@ -7,8 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import utils.LocatorsUtils;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
@@ -19,6 +17,7 @@ public class HomePage extends BasePage {
     private By catalogButton = By.xpath("//nav[@class='header__categories-catalog js-open-catalog-mb']");
     private By cashbackIcon = new By.ByXPath("//i[contains(@class, 'icon-cashback-circle')]");
     private By detailsButton = new By.ByXPath("//div[@class='header-tooltip__nodata']//a[@data-url='L3VrL2FjY291bnQvZm94ZmFu']");
+    private By buyersButton = By.xpath("//div[@class='header__sub-buyers unselectable']");
     private By compareIcon = new By.ByCssSelector(".icon-compare-2-filled");
     private By productCatalog = new By.ByXPath("//a[@class='jslink button']");
     private By favoriteIcon = new By.ByCssSelector(".header-favorite__icon.header-favorite__icon_hover.icon-heart-filled");
@@ -95,6 +94,11 @@ public class HomePage extends BasePage {
         WebElement searchToCatalogButton = driver.findElement(productCatalog);
         searchToCatalogButton.click();
         return new AllCategoriesPage(driver);
+    }
+
+    public BuyersPage clickBuyersButton() {
+        driver.findElement(buyersButton).click();
+        return new BuyersPage(driver);
     }
 
     public SearchResultsPage inputMaxPriceToSideBar(String maxPrice) {

@@ -1,13 +1,10 @@
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CartPage;
-import pages.HomePage;
-import pages.ProductPage;
-import pages.SearchResultsPage;
+import pages.*;
 
 import static utils.Category.LAPTOPS;
-import static utils.Subcategories.LAPTOPS_APPLE;
+import static utils.SubCategories.LAPTOPS_APPLE;
 
 
 public class CartTest extends BaseTest {
@@ -54,6 +51,20 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(actualSearchPlaceholder, expectedSearchPlaceholder);
     }
 
+    @Test(groups = {"positive"})
+    public void addGiftCardToCartTest() {
+        HomePage homePage = new HomePage(driver);
+        BuyersPage buyersPage = new BuyersPage(driver);
+        GiftCardPage giftCardPage = new GiftCardPage(driver);
+
+        String expectedResult = "500 ₴";
+
+        homePage.clickBuyersButton();
+        buyersPage.clickGiftCardButton();
+        giftCardPage.clickBuyButton();
+        String actualResult = giftCardPage.getSumOfGiftCard();
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 
     @Test(groups = {"positive"})
     public void addTwoProductsToCartTest() {
@@ -82,3 +93,4 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(actualText2, expectedText2);
     }
 }
+
