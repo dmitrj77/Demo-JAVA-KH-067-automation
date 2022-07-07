@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,23 +28,15 @@ public class CartPage extends BasePage {
     }
 
     @Description("Click delete button of cart")
-    public void clickDeleteButton() {
+    public boolean clickDeleteButton() {
+        List<String> beforeDelete = getTitles();
         List<WebElement> searchDeleteButtons = driver.findElements(searchDeleteButton);
-        wait.until(ExpectedConditions.visibilityOfAllElements(searchDeleteButtons));
         searchDeleteButtons.get(0).click();
-    }
-
-    @Description("Get number of products in cart")
-    public int getAmountProductsInCart() {
-        List<WebElement> titleElements = driver.findElements(titlesOfProduct);
-        wait.until(ExpectedConditions.visibilityOfAllElements(titleElements));
-        return titleElements.size();
-    }
-    @Description("Get amount products in cart after delete")
-    public int getAmountProductsInCartAfterDelete() {
-        wait.until(ExpectedConditions.numberOfElementsToBe(titlesOfProduct,getAmountProductsInCart()-1));
-        List<WebElement> titleElements = driver.findElements(titlesOfProduct);
-        return titleElements.size();
+        wait.until(ExpectedConditions.invisibilityOf(searchDeleteButtons.get(0)));
+        List<String> afterDelete = getTitles();
+        if (beforeDelete.size() == afterDelete.size() + 1) {
+            return true;
+        } else return false;
     }
 
 }

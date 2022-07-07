@@ -40,10 +40,8 @@ public class DeletedProductsFromCart extends BaseTest {
     @Test
     public void deleteOneProductTest() {
         CartPage cartPage = new CartPage(driver);
-        int sizeBefore = cartPage.getAmountProductsInCart();
-        cartPage.clickDeleteButton();
-        int sizeAfter = cartPage.getAmountProductsInCartAfterDelete();
-        Assert.assertTrue(sizeAfter < sizeBefore);
+        ;
+        Assert.assertTrue(cartPage.clickDeleteButton());
     }
 
 }
