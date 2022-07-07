@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,6 +12,7 @@ public class UserAgreementPage extends BasePage {
         super(driver);
     }
 
+    @Step("Get title of User agreement page ")
     public String getTitle(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(titleUserAgreementPage));
         String title = driver.findElement(titleUserAgreementPage).getText();
