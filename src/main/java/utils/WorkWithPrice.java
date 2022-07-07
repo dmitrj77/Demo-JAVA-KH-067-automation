@@ -4,11 +4,10 @@ import io.qameta.allure.Description;
 
 public class WorkWithPrice {
     @Description("Get a price of the product and make it over from String to int")
-    public static int makeOverPriceFromStringToInt(String price) {
+    public static int getintFromPrice(String price) {
         String[] splitedString = price.split(" ");
         StringBuilder stringBuilder = new StringBuilder();
-        int k = splitedString.length - 1;
-        for (int i = 0; i < k; i++) {
+        for (int i = 0; i < splitedString.length - 1; i++) {
             stringBuilder.append(splitedString[i]);
         }
         String joinedString = stringBuilder.toString();

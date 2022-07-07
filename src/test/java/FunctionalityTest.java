@@ -79,7 +79,7 @@ public class FunctionalityTest extends BaseTest {
         homePage.sortProductsDesc();
         searchResultsPage.clickProductByIndex(indexOfProduct);
         String actualResString = productPage.getPriseOfProduct();
-        int actualPrice = WorkWithPrice.makeOverPriceFromStringToInt(actualResString);
+        int actualPrice = WorkWithPrice.getintFromPrice(actualResString);
 
         Assert.assertTrue(expectedPrice >= actualPrice);
     }
