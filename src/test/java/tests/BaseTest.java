@@ -1,4 +1,4 @@
-package listener;
+package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import listener.CustomListener;

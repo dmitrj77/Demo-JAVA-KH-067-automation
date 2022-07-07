@@ -1,16 +1,19 @@
+package tests;
+
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
+import tests.BaseTest;
 import utils.WorkWithPrice;
 
 import static utils.Category.SMARTPHONES;
 import static utils.SubCategories.SMARTPHONES_APPLE;
 
 public class FunctionalityTest extends BaseTest {
-
+    @Description("Check cash back icon")
     @Test
-    public void checkCashbackIcon() {
+    public void checkCashbackIconTest() {
         HomePage homePage = new HomePage(driver);
         CashBackFoxFanPage cashBackFoxFanPage = new CashBackFoxFanPage(driver);
 
@@ -24,8 +27,9 @@ public class FunctionalityTest extends BaseTest {
         Assert.assertEquals(actualLogoText, expectedLogoText);
     }
 
+    @Description("Check compare icon")
     @Test
-    public void checkCompareIcon() {
+    public void checkCompareIconTest() {
         HomePage homePage = new HomePage(driver);
         AllCategoriesPage allCategoriesPage = new AllCategoriesPage(driver);
         String language = "УКР";
@@ -38,7 +42,7 @@ public class FunctionalityTest extends BaseTest {
 
     @Description("Check site terms of use")
     @Test
-    public void checkSiteTermsOfUse() {
+    public void checkSiteTermsOfUseTest() {
         HomePage homePage = new HomePage(driver);
         UserAgreementPage userAgreementPage = new UserAgreementPage(driver);
 
@@ -53,7 +57,7 @@ public class FunctionalityTest extends BaseTest {
 
     @Description("Check favorite icon")
     @Test
-    public void checkFavoriteIcon() {
+    public void checkFavoriteIconTest() {
         HomePage homePage = new HomePage(driver);
         AllCategoriesPage allCategoriesPage = new AllCategoriesPage(driver);
         String language = "УКР";
@@ -66,7 +70,7 @@ public class FunctionalityTest extends BaseTest {
 
     @Description("Sort product by Max price")
     @Test
-    public void sidebarPriceSorting() {
+    public void sidebarPriceSortingTest() {
         HomePage homePage = new HomePage(driver);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         ProductPage productPage = new ProductPage(driver);

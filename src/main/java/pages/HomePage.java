@@ -28,6 +28,8 @@ public class HomePage extends BasePage {
     private By sidebarSubmitButton = new By.ByXPath("//input[@type='submit']");
     private By priceDescLink = new By.ByXPath("//ul[@class='listing__body-sort']//li[@data-sort-order='PriceDesc']");
     private By scrollTopButton = new By.ByXPath("//div[@class='scroll-top-button active']");
+    private By blueScreen = By.xpath("//div[@class='subscribe-container lazy-block']");
+
 
 
     public HomePage(WebDriver driver) {
@@ -94,7 +96,7 @@ public class HomePage extends BasePage {
     @Step("Go to Agreement page ")
     public UserAgreementPage clickTermsOfUse() {
         Actions actionProvider = new Actions(driver);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(siteTermsOfUse));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(blueScreen));
         actionProvider.moveToElement(driver.findElement(siteTermsOfUse)).click().build().perform();
         return new UserAgreementPage(driver);
     }
@@ -113,7 +115,7 @@ public class HomePage extends BasePage {
         driver.findElement(buyersButton).click();
         return new BuyersPage(driver);
     }
-
+    @Step("Input max price to sidebar {maxPrice}")
     public SearchResultsPage inputMaxPriceToSideBar(String maxPrice) {
         WebElement priceInputField = driver.findElement(priceInputFieldTo);
         Actions action = new Actions(driver);
@@ -123,9 +125,10 @@ public class HomePage extends BasePage {
         driver.findElement(sidebarSubmitButton).click();
         return new SearchResultsPage(driver);
     }
-
+    @Step("Sort products desc")
     public SearchResultsPage sortProductsDesc() {
         driver.findElement(scrollTopButton).click();
+        wait.until(ExpectedConditions.elementToBeClickable(priceDescLink));
         driver.findElement(priceDescLink).click();
         return new SearchResultsPage(driver);
     }

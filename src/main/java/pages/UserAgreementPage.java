@@ -13,7 +13,7 @@ public class UserAgreementPage extends BasePage {
     }
 
     @Step("Get title of User agreement page ")
-    public String getTitle(){
+    public String getTitle() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(titleUserAgreementPage));
         String title = driver.findElement(titleUserAgreementPage).getText();
         return title;
