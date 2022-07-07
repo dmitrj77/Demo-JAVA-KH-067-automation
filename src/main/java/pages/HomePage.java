@@ -24,6 +24,9 @@ public class HomePage extends BasePage {
     private By productCatalog = new By.ByXPath("//a[@class='jslink button']");
     private By favoriteIcon = new By.ByCssSelector(".header-favorite__icon.header-favorite__icon_hover.icon-heart-filled");
     private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
+	private By brand = By.cssSelector(".brands > li:nth-child(1) > a");
+	private By best = By.cssSelector("[@id=\"main-page\"]/div[13]/div/div/div[2]/div[1]/div/div[3]/a/div/div[2]/div[1]");
+	private By productCardButton = By.ByXPath("//div[@class='button card__buttons-row card__buttons-full buy-button product-buy-button']");
 
 
 
@@ -110,6 +113,28 @@ public class HomePage extends BasePage {
     public BuyersPage clickBuyersButton() {
         driver.findElement(buyersButton).click();
         return new BuyersPage(driver);
+    }
+	
+	public SearchResultsPage clickBrand() {
+        driver.findElement(brand).click();
+        return new SearchResultsPage(driver);
+    }
+	
+	public SearchResultsPage clickBests() {
+        driver.findElement(best).click();
+        return new SearchResultsPage(driver);
+    }
+	
+	public String clickProductCardButton() {
+        WebElement element = driver.findElements(productCardButton).get(0);
+		element.click();
+        return element.getText();
+    }
+	
+	public ShopPage clickShop() {
+		String shops = "Наші магазини по всій Україні";
+        driver.findElement(shops).click();
+        return new ShopPage(driver);
     }
 
 }
