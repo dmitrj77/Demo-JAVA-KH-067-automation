@@ -42,14 +42,8 @@ public class DeletedProductsFromCart extends BaseTest {
         CartPage cartPage = new CartPage(driver);
         int sizeBefore = cartPage.getAmountProductsInCart();
         cartPage.clickDeleteButton();
-        int sizeAfter = cartPage.getAmountProductsInCart();
-        boolean isEquals;
-        if (sizeAfter < sizeBefore) {
-            isEquals = true;
-        } else {
-            isEquals = false;
-        }
-        Assert.assertTrue(isEquals);
+        int sizeAfter = cartPage.getAmountProductsInCartAfterDelete();
+        Assert.assertTrue(sizeAfter < sizeBefore);
     }
 
 }

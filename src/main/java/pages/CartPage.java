@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartPage extends BasePage {
-    private By titlesOfProduct = new By.ByCssSelector(".header-tooltip__cards-item__title");
+    private By titlesOfProduct = new By.ByXPath("//div[@class='tooltip slot tooltip_active']//a[@class='header-tooltip__cards-item__title ']");
     private By searchDeleteButton = new By.ByCssSelector(".button-link.js-delete-product-from-basket-list");
 
     public CartPage(WebDriver driver) {
@@ -39,6 +39,13 @@ public class CartPage extends BasePage {
     public int getAmountProductsInCart() {
         List<WebElement> titleElements = driver.findElements(titlesOfProduct);
         wait.until(ExpectedConditions.visibilityOfAllElements(titleElements));
+        return titleElements.size();
+    }
+    @Description("Get number of products in cart")
+    public int getAmountProductsInCartAfterDelete() {
+       // WebElement deleteTitle = driver.findElement(titlesOfProduct);
+        wait.until(ExpectedConditions.numberOfElementsToBe(titlesOfProduct,1));
+        List<WebElement> titleElements = driver.findElements(titlesOfProduct);
         return titleElements.size();
     }
 
