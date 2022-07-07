@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,24 +24,29 @@ public class ProductPage extends BasePage {
         return driver.findElement(title);
     }
 
+    @Step("Get title of the product")
     public String getTitle() {
         return driver.findElement(title).getText();
     }
 
+    @Step("Add product to cart")
     public CartPage buy() {
         driver.findElement(buyButton).click();
         return new CartPage(driver);
     }
 
+    @Step("Get price og the product")
     public String getPriseOfProduct() {
         return driver.findElement(price).getText();
     }
 
+    @Step("Click Feature button")
     public ProductPage clickFeatureButton() {
         driver.findElement(featureButton).click();
         return new ProductPage(driver);
     }
 
+    @Step("Get list of features")
     public List<WebElement> getFeatureText() {
         List<WebElement> features = driver.findElements(featureText);
         return features;
