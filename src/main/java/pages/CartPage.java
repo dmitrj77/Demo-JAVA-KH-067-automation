@@ -12,6 +12,7 @@ import java.util.List;
 
 public class CartPage extends BasePage {
     private By titlesOfProduct = new By.ByCssSelector(".header-tooltip__cards-item__title ");
+    private By searchDeleteButton = new By.ByCssSelector(".button-link.js-delete-product-from-basket-list");
 
     public CartPage(WebDriver driver) {
         super(driver);

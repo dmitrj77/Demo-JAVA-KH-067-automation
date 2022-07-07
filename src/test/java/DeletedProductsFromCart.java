@@ -40,7 +40,6 @@ public class DeletedProductsFromCart extends BaseTest {
     @Test
     public void deleteOneProductTest() {
         CartPage cartPage = new CartPage(driver);
-        ;
         Assert.assertTrue(cartPage.clickDeleteButton());
     }
 
