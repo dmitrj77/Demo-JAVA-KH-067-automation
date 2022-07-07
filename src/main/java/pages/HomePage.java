@@ -19,13 +19,14 @@ public class HomePage extends BasePage {
     private By cashbackIcon = new By.ByXPath("//i[contains(@class, 'icon-cashback-circle')]");
     private By detailsButton = new By.ByXPath("//div[@class='header-tooltip__nodata']//a[@data-url='L3VrL2FjY291bnQvZm94ZmFu']");
     private By buyersButton = By.xpath("//div[@class='header__sub-buyers unselectable']");
-
     private By compareIcon = new By.ByCssSelector(".icon-compare-2-filled");
     private By productCatalog = new By.ByXPath("//a[@class='jslink button']");
     private By favoriteIcon = new By.ByCssSelector(".header-favorite__icon.header-favorite__icon_hover.icon-heart-filled");
     private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
-
-
+    private By priceInputFieldTo = new By.ByXPath("//input[@id='range-field-to']");
+    private By sidebarSubmitButton = new By.ByXPath("//input[@type='submit']");
+    private By priceDescLink = new By.ByXPath("//ul[@class='listing__body-sort']//li[@data-sort-order='PriceDesc']");
+    private By scrollTopButton = new By.ByXPath("//div[@class='scroll-top-button active']");
 
 
     public HomePage(WebDriver driver) {
@@ -110,6 +111,22 @@ public class HomePage extends BasePage {
     public BuyersPage clickBuyersButton() {
         driver.findElement(buyersButton).click();
         return new BuyersPage(driver);
+    }
+
+    public SearchResultsPage inputMaxPriceToSideBar(String maxPrice) {
+        WebElement priceInputField = driver.findElement(priceInputFieldTo);
+        Actions action = new Actions(driver);
+        action.doubleClick(priceInputField).build().perform();
+        driver.findElement(priceInputFieldTo).sendKeys(Keys.BACK_SPACE);
+        driver.findElement(priceInputFieldTo).sendKeys(maxPrice);
+        driver.findElement(sidebarSubmitButton).click();
+        return new SearchResultsPage(driver);
+    }
+
+    public SearchResultsPage sortProductsDesc() {
+        driver.findElement(scrollTopButton).click();
+        driver.findElement(priceDescLink).click();
+        return new SearchResultsPage(driver);
     }
 
 }

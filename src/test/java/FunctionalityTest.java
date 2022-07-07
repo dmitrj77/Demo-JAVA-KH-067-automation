@@ -1,10 +1,11 @@
-import com.sun.org.glassfish.gmbal.Description;
+import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.AllCategoriesPage;
-import pages.CashBackFoxFanPage;
-import pages.HomePage;
-import pages.UserAgreementPage;
+import pages.*;
+import utils.WorkWithPrice;
+
+import static utils.Category.SMARTPHONES;
+import static utils.SubCategories.SMARTPHONES_APPLE;
 
 public class FunctionalityTest extends BaseTest {
 
@@ -61,6 +62,29 @@ public class FunctionalityTest extends BaseTest {
         String expectedTitle = "Всі категорії";
         String actualTitle = allCategoriesPage.getTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @Description("Sort product by Max price")
+    @Test
+    public void sidebarPriceSorting() {
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+        ProductPage productPage = new ProductPage(driver);
+
+        String maxPrice = "25000";
+        int expectedPrice = 25000;
+        int indexOfProduct = 0;
+
+
+        homePage.clickCatalogButton();
+        homePage.clickSubCategory(SMARTPHONES, SMARTPHONES_APPLE);
+        homePage.inputMaxPriceToSideBar(maxPrice);
+        homePage.sortProductsDesc();
+        searchResultsPage.clickProductByIndex(indexOfProduct);
+        String actualResString = productPage.getPriseOfProduct();
+        int actualPrice = WorkWithPrice.getintFromPrice(actualResString);
+
+        Assert.assertTrue(expectedPrice >= actualPrice);
     }
 
 }
