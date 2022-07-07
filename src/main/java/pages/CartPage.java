@@ -41,10 +41,9 @@ public class CartPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfAllElements(titleElements));
         return titleElements.size();
     }
-    @Description("Get number of products in cart")
+    @Description("Get amount products in cart after delete")
     public int getAmountProductsInCartAfterDelete() {
-       // WebElement deleteTitle = driver.findElement(titlesOfProduct);
-        wait.until(ExpectedConditions.numberOfElementsToBe(titlesOfProduct,1));
+        wait.until(ExpectedConditions.numberOfElementsToBe(titlesOfProduct,getAmountProductsInCart()-1));
         List<WebElement> titleElements = driver.findElements(titlesOfProduct);
         return titleElements.size();
     }
