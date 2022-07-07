@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,7 @@ public class SearchResultsPage extends BasePage {
         super(driver);
     }
 
+    @Step("Choose product by {index}")
     public ProductPage clickProductByIndex(int index) {
         wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(results, 0));
         List<WebElement> resultsWebElements = driver.findElements(results);
@@ -22,6 +24,7 @@ public class SearchResultsPage extends BasePage {
         return new ProductPage(driver);
     }
 
+    @Step("Get title of product that not exists")
     public String getTitleNotFound() {
         WebElement getTitle = driver.findElement(productNotFoundTitle);
         return getTitle.getText();

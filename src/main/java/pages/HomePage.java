@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -23,12 +24,17 @@ public class HomePage extends BasePage {
     private By productCatalog = new By.ByXPath("//a[@class='jslink button']");
     private By favoriteIcon = new By.ByCssSelector(".header-favorite__icon.header-favorite__icon_hover.icon-heart-filled");
     private By siteTermsOfUse = By.xpath("//a[contains(@href,'1362')]");
+    private By priceInputFieldTo = new By.ByXPath("//input[@id='range-field-to']");
+    private By sidebarSubmitButton = new By.ByXPath("//input[@type='submit']");
+    private By priceDescLink = new By.ByXPath("//ul[@class='listing__body-sort']//li[@data-sort-order='PriceDesc']");
+    private By scrollTopButton = new By.ByXPath("//div[@class='scroll-top-button active']");
 
 
-    public HomePage(WebDriver driver)  {
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 
+    @Step("Search product: {searchQuery}")
     public SearchResultsPage search(String searchQuery) {
         WebElement searchInputElement = driver.findElement(searchInput);
         searchInputElement.clear();
@@ -37,6 +43,7 @@ public class HomePage extends BasePage {
         return new SearchResultsPage(driver);
     }
 
+    @Step("Change language: {language}")
     public HomePage setLanguage(String language) {
         List<WebElement> languages = driver.findElements(languageChoice);
         wait.until(ExpectedConditions.visibilityOfAllElements(languages));
@@ -48,11 +55,13 @@ public class HomePage extends BasePage {
         return new HomePage(driver);
     }
 
+    @Step("Click catalog button")
     public HomePage clickCatalogButton() {
         driver.findElement(catalogButton).click();
         return new HomePage(driver);
     }
 
+    @Step("Click category then subcategory: {category},{subcategory}")
     public SearchResultsPage clickSubCategory(String category, String subcategory) {
         driver.findElement(LocatorsUtils.getLinkLocator(category)).click();
         wait.until(ExpectedConditions.elementToBeClickable(LocatorsUtils.getLinkLocator(subcategory)));
@@ -60,12 +69,14 @@ public class HomePage extends BasePage {
         return new SearchResultsPage(driver);
     }
 
+    @Step("Go to Cashback page")
     public CashBackFoxFanPage goToCashBackPage() {
         driver.findElement(cashbackIcon).click();
         driver.findElement(detailsButton).click();
         return new CashBackFoxFanPage(driver);
     }
 
+    @Step("Go to All category page via compare icon")
     public AllCategoriesPage compareAllCategory() {
         WebElement searchCompareIcon = driver.findElement(compareIcon);
         searchCompareIcon.click();
@@ -74,18 +85,22 @@ public class HomePage extends BasePage {
         return new AllCategoriesPage(driver);
     }
 
+    @Step("Search placeholder")
     public String getSearchPlaceHolder() {
         WebElement searchTitlePlaceHolder = driver.findElement(searchInput);
         return searchTitlePlaceHolder.getAttribute("placeholder");
     }
 
+    @Step("Go to Agreement page ")
     public UserAgreementPage clickTermsOfUse() {
         Actions actionProvider = new Actions(driver);
         wait.until(ExpectedConditions.visibilityOfElementLocated(siteTermsOfUse));
         actionProvider.moveToElement(driver.findElement(siteTermsOfUse)).click().build().perform();
         return new UserAgreementPage(driver);
     }
-    public AllCategoriesPage clickFavoriteIcon() {
+
+    @Step("Go to All category page via Favorite icon")
+        public AllCategoriesPage clickFavoriteIcon() {
         WebElement searchCompareIcon = driver.findElement(favoriteIcon);
         searchCompareIcon.click();
         WebElement searchToCatalogButton = driver.findElement(productCatalog);
@@ -93,9 +108,26 @@ public class HomePage extends BasePage {
         return new AllCategoriesPage(driver);
     }
 
+    @Step("Go to Buyers page")
     public BuyersPage clickBuyersButton() {
         driver.findElement(buyersButton).click();
         return new BuyersPage(driver);
+    }
+
+    public SearchResultsPage inputMaxPriceToSideBar(String maxPrice) {
+        WebElement priceInputField = driver.findElement(priceInputFieldTo);
+        Actions action = new Actions(driver);
+        action.doubleClick(priceInputField).build().perform();
+        driver.findElement(priceInputFieldTo).sendKeys(Keys.BACK_SPACE);
+        driver.findElement(priceInputFieldTo).sendKeys(maxPrice);
+        driver.findElement(sidebarSubmitButton).click();
+        return new SearchResultsPage(driver);
+    }
+
+    public SearchResultsPage sortProductsDesc() {
+        driver.findElement(scrollTopButton).click();
+        driver.findElement(priceDescLink).click();
+        return new SearchResultsPage(driver);
     }
 
 }

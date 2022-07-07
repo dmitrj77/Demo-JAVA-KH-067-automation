@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -11,11 +12,13 @@ public class GiftCardPage extends BasePage {
         super(driver);
     }
 
+    @Step("Add Gift card to cart")
     public CartPage clickBuyButton() {
         driver.findElement(buyButton).click();
         return new CartPage(driver);
     }
 
+    @Step("Get final price of Gift cards")
     public String getSumOfGiftCard() {
         String sum = driver.findElement(sumOfGiftCard).getText();
         return sum;
