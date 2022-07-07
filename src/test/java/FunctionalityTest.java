@@ -1,4 +1,3 @@
-import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
@@ -36,6 +35,7 @@ public class FunctionalityTest extends BaseTest {
         Assert.assertEquals(actualTitleOfPage, expectedTitleOfPage);
     }
 
+    @Description("Check site terms of use")
     @Test
     public void checkSiteTermsOfUse() {
         HomePage homePage = new HomePage(driver);
@@ -49,6 +49,8 @@ public class FunctionalityTest extends BaseTest {
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
+
+    @Description("Check favorite icon")
     @Test
     public void checkFavoriteIcon() {
         HomePage homePage = new HomePage(driver);
