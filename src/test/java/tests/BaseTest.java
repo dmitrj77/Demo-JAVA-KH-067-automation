@@ -1,13 +1,14 @@
+package tests;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
+import listener.CustomListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.DataProvider;
+import org.testng.annotations.*;
 
 import java.time.Duration;
 
+@Listeners(CustomListener.class)
 public class BaseTest {
     protected WebDriver driver;
 
@@ -36,5 +37,10 @@ public class BaseTest {
                 {"РУС", "Я ищу ..."},
         };
     }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
 
 }

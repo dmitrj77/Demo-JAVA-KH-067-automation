@@ -1,3 +1,5 @@
+package tests;
+
 import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -6,6 +8,7 @@ import pages.CartPage;
 import pages.HomePage;
 import pages.ProductPage;
 import pages.SearchResultsPage;
+import tests.BaseTest;
 
 
 public class DeletedProductsFromCart extends BaseTest {
@@ -22,18 +25,12 @@ public class DeletedProductsFromCart extends BaseTest {
 
         homePage.search(searchCategory1);
         searchResultsPage.clickProductByIndex(testProductIndex);
-        String expectedText1 = productPage.getTitle();
         productPage.buy();
-        String actualText1 = cartPage.getTitles().get(0);
 
         homePage.search(searchCategory2);
         searchResultsPage.clickProductByIndex(testProductIndex);
-        String expectedText2 = productPage.getTitle();
         productPage.buy();
-        String actualText2 = cartPage.getTitles().get(1);
 
-        Assert.assertEquals(actualText1, expectedText1);
-        Assert.assertEquals(actualText2, expectedText2);
     }
 
     @Description("Delete one product from cart")
