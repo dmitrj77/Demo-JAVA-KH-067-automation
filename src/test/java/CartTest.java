@@ -1,3 +1,4 @@
+import com.sun.org.glassfish.gmbal.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
@@ -8,6 +9,7 @@ import static utils.SubCategories.LAPTOPS_APPLE;
 
 public class CartTest extends BaseTest {
 
+    @Description("Add one product to cart")
     @Test
     public void addOneProductToCartTest() {
         HomePage homePage = new HomePage(driver);
@@ -27,6 +29,7 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(actualText, expectedText);
     }
 
+    @Description("Check Feature Button")
     @Test
     public void checkFeatureButton() {
         HomePage homePage = new HomePage(driver);
@@ -43,8 +46,11 @@ public class CartTest extends BaseTest {
         Assert.assertNotNull(productPage.getFeatureText());
     }
 
+
+    @Description("Change language on site")
     @Test
     public void changeLanguageOnSite(String language, String expectedSearchPlaceholder) {
+
         HomePage homePage = new HomePage(driver);
 
         homePage.setLanguage(language);
@@ -52,6 +58,8 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(actualSearchPlaceholder, expectedSearchPlaceholder);
     }
 
+
+    @Description("Add Gift card to cart")
     @Test
     public void addGiftCardToCartTest() {
         HomePage homePage = new HomePage(driver);
