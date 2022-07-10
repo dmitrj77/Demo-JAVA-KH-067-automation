@@ -4,7 +4,6 @@ import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
-import tests.BaseTest;
 
 import static utils.Category.LAPTOPS;
 import static utils.SubCategories.LAPTOPS_APPLE;
@@ -102,6 +101,23 @@ public class CartTest extends BaseTest {
 
         // Assert.assertEquals(actualText1, expectedText1);
         Assert.assertEquals(actualText2, expectedText2);
+    }
+    @Description("Add product to cart via buy button")
+    @Test
+    public void addProductViaBuyButton() {
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+
+        String language = "УКР";
+        String searchCategory = "Кондиціонер";
+        int testProductIndex = 0;
+        String expectedText = "В КОШИКУ";
+
+        homePage.setLanguage(language);
+        homePage.search(searchCategory);
+        searchResultsPage.clickByButton(testProductIndex);
+        String actualText = searchResultsPage.getTitleOfBuyButton(testProductIndex);
+        Assert.assertEquals(expectedText, actualText);
     }
 }
 

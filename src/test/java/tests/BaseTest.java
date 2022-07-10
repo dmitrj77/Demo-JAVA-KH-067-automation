@@ -2,6 +2,7 @@ package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import listener.CustomListener;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
@@ -11,6 +12,7 @@ import java.time.Duration;
 @Listeners(CustomListener.class)
 public class BaseTest {
     protected WebDriver driver;
+
 
     @BeforeSuite
     public void webDriverManagerSetup() {
