@@ -1,5 +1,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="Suite1" verbose="1">
+    <parameter name="@search" value="dsdssd"></parameter>
     <test name="tests.FunctionalityTest">
         <classes>
             <class name="tests.FunctionalityTest"></class>

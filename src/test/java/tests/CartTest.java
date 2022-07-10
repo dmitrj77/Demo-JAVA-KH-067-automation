@@ -2,9 +2,10 @@ package tests;
 
 import io.qameta.allure.Description;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.*;
-import tests.BaseTest;
 
 import static utils.Category.LAPTOPS;
 import static utils.SubCategories.LAPTOPS_APPLE;
@@ -102,6 +103,23 @@ public class CartTest extends BaseTest {
 
         // Assert.assertEquals(actualText1, expectedText1);
         Assert.assertEquals(actualText2, expectedText2);
+    }
+
+    @Description("Add non-exist product")
+    @Parameters("@search")
+    @Test
+    public void addProductNonExist(@Optional("dsds") String search) {
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+        String language = "УКР";
+
+        homePage.setLanguage(language);
+        homePage.search(search);
+        String actualText = searchResultsPage.getTitleNotFound();
+        String expectedText = "За запитом «" + search + "» нічого не знайдено";
+
+        Assert.assertEquals(actualText, expectedText);
+
     }
 }
 

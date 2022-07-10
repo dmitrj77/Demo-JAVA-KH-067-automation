@@ -4,7 +4,6 @@ import io.qameta.allure.Description;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
-import tests.BaseTest;
 import utils.WorkWithPrice;
 
 import static utils.Category.SMARTPHONES;
@@ -86,7 +85,7 @@ public class FunctionalityTest extends BaseTest {
         homePage.sortProductsDesc();
         searchResultsPage.clickProductByIndex(indexOfProduct);
         String actualResString = productPage.getPriseOfProduct();
-        int actualPrice = WorkWithPrice.getintFromPrice(actualResString);
+        int actualPrice = WorkWithPrice.getIntFromPrice(actualResString);
 
         Assert.assertTrue(expectedPrice >= actualPrice);
     }
