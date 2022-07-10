@@ -104,7 +104,7 @@ public class CartTest extends BaseTest {
     }
     @Description("Add product to cart via buy button")
     @Test
-    public void addProductViaBuyButton() {
+    public void addProductViaBuyButtonTest() {
         HomePage homePage = new HomePage(driver);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
 
