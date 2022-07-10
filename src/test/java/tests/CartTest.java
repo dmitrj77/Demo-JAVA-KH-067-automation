@@ -6,7 +6,6 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.*;
-import tests.BaseTest;
 
 import static utils.Category.LAPTOPS;
 import static utils.SubCategories.LAPTOPS_APPLE;
@@ -126,7 +125,7 @@ public class CartTest extends BaseTest {
     @Description("Add non-exist product")
     @Parameters("@search")
     @Test
-    public void addProductNonExist(@Optional("dsds") String search) {
+    public void addProductNonExistTest(@Optional("dsds") String search) {
         HomePage homePage = new HomePage(driver);
         SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
         String language = "УКР";
