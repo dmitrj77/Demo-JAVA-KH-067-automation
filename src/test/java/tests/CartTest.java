@@ -2,6 +2,8 @@ package tests;
 
 import io.qameta.allure.Description;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.*;
 
@@ -118,6 +120,23 @@ public class CartTest extends BaseTest {
         searchResultsPage.clickByButton(testProductIndex);
         String actualText = searchResultsPage.getTitleOfBuyButton(testProductIndex);
         Assert.assertEquals(expectedText, actualText);
+    }
+
+    @Description("Add non-exist product")
+    @Parameters("@search")
+    @Test
+    public void addProductNonExistTest(@Optional("dsds") String search) {
+        HomePage homePage = new HomePage(driver);
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+        String language = "УКР";
+
+        homePage.setLanguage(language);
+        homePage.search(search);
+        String actualText = searchResultsPage.getTitleNotFound();
+        String expectedText = "За запитом «" + search + "» нічого не знайдено";
+
+        Assert.assertEquals(actualText, expectedText);
+
     }
 }
 
